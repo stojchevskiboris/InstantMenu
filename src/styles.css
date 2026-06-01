@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles */
+:root {
+  --primary-color: #000;
+  --secondary-color: #6c757d;
+  --bg-light: #f8f9fa;
+  --accent-color: #ffc107;
+}
+
+body {
+  background-color: #e9ecef;
+  margin: 0;
+  padding: 0;
+}
+
+/* Constrain app to mobile width on desktop */
+app-root {
+  display: block;
+  max-width: 500px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.sticky-top {
+  background: white;
+  z-index: 1020;
+}
+
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #222;
+  border-color: #222;
+}

@@ -1,0 +1,54 @@
+
+> instant-menu@0.0.0 start
+> ng serve
+
+❯ Building...
+✔ Building...
+Initial chunk files | Names         |  Raw size
+main.js             | main          |  40.85 kB |
+styles.css          | styles        | 944 bytes |
+
+                    | Initial total |  41.79 kB
+
+Application bundle generation complete. [2.376 seconds] - 2026-06-01T21:40:25.176Z
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  ➜  Local:   http://localhost:4200/
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Application bundle generation failed. [0.558 seconds] - 2026-06-01T21:42:09.584Z
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2554: Expected 1 arguments, but got 0.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/menu-item.component.ts:27:89:
+[37m      27 │ ... btn-sm btn-white rounded-circle shadow-sm" (click)="[32mdecrement[37m()">
+         ╵                                                         [32m~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2554: Expected 1 arguments, but got 0.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/menu-item.component.ts:31:89:
+[37m      31 │ ... btn-sm btn-white rounded-circle shadow-sm" (click)="[32mincrement[37m()">
+         ╵                                                         [32m~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mTS2554: Expected 1 arguments, but got 0.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/menu-item.component.ts:36:98:
+[37m      36 │ ...tn-sm rounded-pill px-3 py-1 fw-bold small" (click)="[32mincrement[37m()">
+         ╵                                                         [32m~~~~~~~~~[0m
+
+
+❯ Changes detected. Rebuilding...
+✔ Changes detected. Rebuilding...
+Initial chunk files | Names         |  Raw size
+main.js             | main          |  43.56 kB |
+styles.css          | styles        | 944 bytes |
+
+                    | Initial total |  44.51 kB
+
+Application bundle generation complete. [0.420 seconds] - 2026-06-01T21:46:19.624Z
+
+Page reload sent to client(s).
+Killed
