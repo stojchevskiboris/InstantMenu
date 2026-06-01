@@ -1,14 +1,4 @@
-import { Component, inject, input } from '@angular/core';
-import { Product } from '../models/menu.model';
-import { MenuService } from '../services/menu.service';
-import { CommonModule } from '@angular/common';
-
-@Component({
-  selector: 'app-menu-item',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
-    <div class="card mb-3 overflow-hidden">
+<div class="card mb-3 overflow-hidden">
       <div class="row g-0 align-items-center">
         <div class="col-8 p-3">
           <div class="d-flex gap-1 mb-1 flex-wrap">
@@ -56,42 +46,3 @@ import { CommonModule } from '@angular/common';
         </div>
       </div>
     </div>
-  `,
-  styles: [`
-    .line-clamp-2 {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .x-small { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    .btn-white {
-      background: white;
-      width: 28px;
-      height: 28px;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #dee2e6;
-    }
-    .btn-white:active { background: #f8f9fa; transform: scale(0.95); }
-    .card { transition: transform 0.1s ease-in-out; border: 1px solid rgba(0,0,0,0.05); }
-  `]
-})
-export class MenuItemComponent {
-  private menuService = inject(MenuService);
-  item = input.required<Product>();
-
-  quantity = () => this.menuService.getQuantity(this.item().id);
-
-  increment(event: Event) {
-    event.stopPropagation();
-    this.menuService.updateQuantity(this.item().id, 1);
-  }
-
-  decrement(event: Event) {
-    event.stopPropagation();
-    this.menuService.updateQuantity(this.item().id, -1);
-  }
-}

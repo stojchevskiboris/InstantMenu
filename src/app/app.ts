@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from './components/header.component';
-import { CategoryToggleComponent } from './components/category-toggle.component';
-import { StickyNavComponent } from './components/sticky-nav.component';
-import { MenuListComponent } from './components/menu-list.component';
+import { HeaderComponent } from "./components/header/header";
+import { CategoryToggleComponent } from "./components/category-toggle/category-toggle";
+import { StickyNavComponent } from "./components/sticky-nav/sticky-nav";
+import { MenuListComponent } from "./components/menu-list/menu-list";
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ import { MenuListComponent } from './components/menu-list.component';
     CategoryToggleComponent,
     StickyNavComponent,
     MenuListComponent
-  ],
+],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

@@ -1,0 +1,12 @@
+<div class="px-3 py-2 bg-white">
+  <div class="d-flex gap-2">
+    <button class="btn flex-fill rounded-pill py-2 fw-bold transition-all border"
+      [class.btn-dark]="selected() === 'drink'" [class.btn-light]="selected() !== 'drink'" (click)="select('drink')">
+      Drinks
+    </button>
+    <button class="btn flex-fill rounded-pill py-2 fw-bold transition-all border"
+      [class.btn-dark]="selected() === 'food'" [class.btn-light]="selected() !== 'food'" (click)="select('food')">
+      Food
+    </button>
+  </div>
+</div>
