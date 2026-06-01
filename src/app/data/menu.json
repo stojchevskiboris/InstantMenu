@@ -1,0 +1,120 @@
+{
+  "venue": {
+    "name": "The Velvet Lounge",
+    "logoUrl": "/logo.png",
+    "wifiPassword": "velvet_lounge_2024",
+    "hours": "18:00 - 02:00",
+    "address": "123 Nightlife St, City Center",
+    "phone": "+1 234 567 890"
+  },
+  "categories": [
+    {
+      "id": "drink",
+      "name": "Drinks",
+      "subCategories": [
+        {
+          "id": "cocktails",
+          "name": "Cocktails",
+          "items": [
+            {
+              "id": "d1",
+              "name": "Signature Martini",
+              "description": "Gin, Dry Vermouth, Lemon Twist",
+              "price": 12.0,
+              "photoUrl": "/martini.jpg",
+              "tags": ["Chef's Special"]
+            },
+            {
+              "id": "d2",
+              "name": "Old Fashioned",
+              "description": "Bourbon, Sugar, Bitters, Orange Peel",
+              "price": 14.0,
+              "photoUrl": "/old-fashioned.jpg"
+            }
+          ]
+        },
+        {
+          "id": "beer",
+          "name": "Beer",
+          "items": [
+            {
+              "id": "d3",
+              "name": "Craft IPA",
+              "description": "Local brewery selection",
+              "price": 7.0,
+              "photoUrl": "/ipa.jpg"
+            }
+          ]
+        },
+        {
+          "id": "wine",
+          "name": "Wine",
+          "items": [
+            {
+              "id": "d4",
+              "name": "Cabernet Sauvignon",
+              "description": "Full-bodied red wine",
+              "price": 45.0,
+              "photoUrl": "/wine.jpg"
+            }
+          ]
+        },
+        {
+          "id": "non-alcoholic",
+          "name": "Non-alcoholic",
+          "items": [
+            {
+              "id": "d5",
+              "name": "Virgin Mojito",
+              "description": "Fresh mint, lime, soda",
+              "price": 6.0,
+              "photoUrl": "/mojito.jpg",
+              "tags": ["Refreshing"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "food",
+      "name": "Food",
+      "subCategories": [
+        {
+          "id": "appetizers",
+          "name": "Appetizers",
+          "items": [
+            {
+              "id": "f1",
+              "name": "Spicy Wings",
+              "description": "Buffalo style with blue cheese dip",
+              "price": 10.0,
+              "photoUrl": "/wings.jpg",
+              "tags": ["Spicy"]
+            },
+            {
+              "id": "f2",
+              "name": "Truffle Fries",
+              "description": "Parmesan, truffle oil, herbs",
+              "price": 8.0,
+              "photoUrl": "/fries.jpg",
+              "tags": ["Vegan"]
+            }
+          ]
+        },
+        {
+          "id": "desserts",
+          "name": "Desserts",
+          "items": [
+            {
+              "id": "f3",
+              "name": "Chocolate Fondant",
+              "description": "Warm heart, vanilla ice cream",
+              "price": 9.0,
+              "photoUrl": "/fondant.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
