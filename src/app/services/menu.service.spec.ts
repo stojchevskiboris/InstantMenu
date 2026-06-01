@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { MenuService } from './menu.service';
+import { describe, it, expect, beforeEach } from 'vitest';
 
 describe('MenuService', () => {
   let service: MenuService;
@@ -32,5 +33,19 @@ describe('MenuService', () => {
   it('should not allow negative quantity', () => {
     service.updateQuantity('d1', -1);
     expect(service.getQuantity('d1')).toBe(0);
+  });
+
+  it('should calculate total quantity correctly', () => {
+    service.updateQuantity('d1', 2);
+    service.updateQuantity('f1', 1);
+    expect(service.totalQuantity()).toBe(3);
+  });
+
+  it('should calculate order items correctly', () => {
+    service.updateQuantity('d1', 1);
+    const items = service.orderItems();
+    expect(items.length).toBe(1);
+    expect(items[0].product.id).toBe('d1');
+    expect(items[0].quantity).toBe(1);
   });
 });

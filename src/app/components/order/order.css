@@ -1,0 +1,54 @@
+.order-container {
+    max-width: 500px;
+    z-index: 1050;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.order-card {
+    transition: var(--transition);
+}
+
+.order-items-list {
+    margin-right: -0.5rem;
+    padding-right: 0.5rem;
+}
+
+.extra-small {
+    font-size: 0.7rem;
+}
+
+.btn-qty-sm {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #e2e8f0;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    transition: var(--transition);
+}
+
+.btn-qty-sm:active {
+    transform: scale(0.9);
+}
+
+.qty-text-sm {
+    width: 20px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.bg-primary {
+    background-color: var(--accent-color) !important;
+}
+
+.order-summary {
+    transition: background-color 0.2s ease;
+}
+
+.order-summary:active {
+    filter: brightness(1.2);
+}

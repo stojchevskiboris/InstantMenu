@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, effect, ElementRef, viewChildren } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { MenuItemComponent } from '../menu-item/menu-item';
 
 @Component({
   selector: 'app-menu-list',
+  standalone: true,
   imports: [CommonModule, MenuItemComponent],
   templateUrl: './menu-list.html',
   styleUrl: './menu-list.css',
@@ -12,4 +13,27 @@ import { MenuItemComponent } from '../menu-item/menu-item';
 export class MenuListComponent {
   private menuService = inject(MenuService);
   subCategories = () => this.menuService.currentMainCategory()?.subCategories || [];
+
+  highlightedId = signal<string | null>(null);
+
+  categoryElements = viewChildren<ElementRef>('categorySection');
+
+  constructor() {
+    // Watch for fragment changes
+    effect(() => {
+      const fragment = window.location.hash.substring(1);
+      if (fragment) {
+        this.highlight(fragment);
+      }
+    });
+  }
+
+  highlight(id: string) {
+    this.highlightedId.set(id);
+    setTimeout(() => {
+      if (this.highlightedId() === id) {
+        this.highlightedId.set(null);
+      }
+    }, 2000);
+  }
 }

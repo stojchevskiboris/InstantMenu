@@ -1,37 +1,42 @@
-<header class="p-3 border-bottom bg-white">
+<header class="sticky-top bg-white border-bottom px-4 py-3">
   <div class="d-flex align-items-center justify-content-between mb-3">
     <div class="d-flex align-items-center">
-      <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center fw-bold"
-        style="width: 45px; height: 45px;">
+      <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center fw-bold shadow-sm"
+        style="width: 48px; height: 48px; font-size: 1.2rem;">
         {{ venue().name.charAt(0) }}
       </div>
       <div class="ms-3">
-        <h1 class="h6 mb-0 fw-bold">{{ venue().name }}</h1>
-        <div class="d-flex align-items-center">
-          <span class="badge bg-success-subtle text-success border border-success-subtle small px-2 py-1"
-            style="font-size: 0.65rem;">Open</span>
-          <small class="text-muted ms-2" style="font-size: 0.75rem;">{{ venue().hours }}</small>
+        <h1 class="h6 mb-0 fw-bold" style="font-size: 1.1rem; letter-spacing: -0.01em;">{{ venue().name }}</h1>
+        <div class="d-flex align-items-center mt-1">
+          <span class="status-dot me-2"></span>
+          <small class="text-muted" style="font-size: 0.8rem; font-weight: 500;">{{ venue().hours }}</small>
         </div>
       </div>
     </div>
     <div class="d-flex gap-2">
-      <select class="form-select form-select-sm border bg-light rounded-pill"
-        style="width: auto; font-size: 0.75rem;">
-        <option value="en">EN</option>
-        <option value="it">IT</option>
-      </select>
-      <button class="btn btn-light btn-sm rounded-circle shadow-sm border" data-bs-toggle="collapse"
-        data-bs-target="#infoPanel" style="width: 32px; height: 32px; padding: 0;">
-        i
+      <button class="btn btn-icon rounded-circle border shadow-sm" data-bs-toggle="collapse"
+        data-bs-target="#infoPanel" aria-expanded="false">
+        <i class="bi bi-info-circle"></i>
       </button>
     </div>
   </div>
 
   <div class="collapse" id="infoPanel">
-    <div class="card card-body bg-light border-0 mb-3 small shadow-sm">
-      <p class="mb-2"><strong><i class="bi bi-geo-alt"></i> Address:</strong> {{ venue().address }}</p>
-      <p class="mb-2"><strong><i class="bi bi-telephone"></i> Phone:</strong> {{ venue().phone }}</p>
-      <p class="mb-0"><strong><i class="bi bi-wifi"></i> Wi-Fi:</strong> {{ venue().wifiPassword }}</p>
+    <div class="card card-body bg-light border-0 mb-2 small shadow-sm rounded-4">
+      <div class="d-flex flex-column gap-2">
+        <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-geo-alt text-secondary"></i>
+            <span>{{ venue().address }}</span>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-telephone text-secondary"></i>
+            <span>{{ venue().phone }}</span>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-wifi text-secondary"></i>
+            <span><strong>Wi-Fi:</strong> {{ venue().wifiPassword }}</span>
+        </div>
+      </div>
     </div>
   </div>
 </header>

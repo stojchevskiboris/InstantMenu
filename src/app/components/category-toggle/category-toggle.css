@@ -1,3 +1,14 @@
-    .transition-all {
-        transition: all 0.2s ease-in-out;
-    }
+.toggle-container {
+    border: 1px solid #e2e8f0;
+}
+
+.btn {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.btn.active {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}

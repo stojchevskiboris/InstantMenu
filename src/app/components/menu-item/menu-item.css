@@ -5,29 +5,52 @@
     overflow: hidden;
 }
 
-.x-small {
-    font-size: 0.6rem;
+.badge-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    padding: 2px 8px;
+    background-color: #fef3c7;
+    color: #92400e;
+    border-radius: 4px;
 }
 
-.btn-white {
+.image-container {
+    min-height: 140px;
+}
+
+.btn-qty {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
     background: white;
-    width: 28px;
-    height: 28px;
-    padding: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #dee2e6;
+    font-size: 0.8rem;
+    color: #1a1a1a;
+    transition: var(--transition);
 }
 
-.btn-white:active {
+.btn-qty:active {
+    transform: scale(0.9);
     background: #f8f9fa;
-    transform: scale(0.95);
+}
+
+.qty-text {
+    width: 32px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.9rem;
 }
 
 .card {
-    transition: transform 0.1s ease-in-out;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:active {
+    transform: scale(0.98);
 }

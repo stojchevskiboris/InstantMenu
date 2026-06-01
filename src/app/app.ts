@@ -3,6 +3,7 @@ import { HeaderComponent } from "./components/header/header";
 import { CategoryToggleComponent } from "./components/category-toggle/category-toggle";
 import { StickyNavComponent } from "./components/sticky-nav/sticky-nav";
 import { MenuListComponent } from "./components/menu-list/menu-list";
+import { OrderComponent } from "./components/order/order";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { MenuListComponent } from "./components/menu-list/menu-list";
     HeaderComponent,
     CategoryToggleComponent,
     StickyNavComponent,
-    MenuListComponent
+    MenuListComponent,
+    OrderComponent
 ],
   templateUrl: './app.html',
   styleUrl: './app.css'

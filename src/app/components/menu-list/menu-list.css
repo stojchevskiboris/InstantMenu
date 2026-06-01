@@ -1,0 +1,36 @@
+.category-section {
+    transition: background-color 0.5s ease;
+    border-radius: 1rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.category-section.highlighted {
+    background-color: #fef3c7; /* light yellow highlight */
+    animation: pulse-highlight 2s ease-out;
+}
+
+@keyframes pulse-highlight {
+    0% { background-color: rgba(251, 191, 36, 0.3); }
+    10% { background-color: rgba(251, 191, 36, 0.4); }
+    100% { background-color: transparent; }
+}
+
+h5 {
+    color: #1a1a1a;
+    position: relative;
+    display: inline-block;
+}
+
+h5::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0.25rem;
+    width: 2rem;
+    height: 3px;
+    background-color: #1a1a1a;
+    border-radius: 99px;
+}
