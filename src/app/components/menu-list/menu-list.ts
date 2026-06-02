@@ -19,12 +19,17 @@ export class MenuListComponent {
   categoryElements = viewChildren<ElementRef>('categorySection');
 
   constructor() {
-    // Watch for fragment changes
-    effect(() => {
-      const fragment = window.location.hash.substring(1);
-      if (fragment) {
-        this.highlight(fragment);
-      }
+    effect((onCleanup) => {
+      const handler = () => {
+        const fragment = window.location.hash.substring(1);
+        if (fragment) {
+          this.highlight(fragment);
+        }
+      };
+
+      handler();
+      window.addEventListener('hashchange', handler);
+      onCleanup(() => window.removeEventListener('hashchange', handler));
     });
   }
 
