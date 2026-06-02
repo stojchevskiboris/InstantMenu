@@ -15,18 +15,26 @@ export class StickyNavComponent {
   activeId = '';
 
   constructor() {
-    // Sync with fragment on load
-    effect(() => {
-      const fragment = window.location.hash.substring(1);
-      if (fragment) {
-        this.activeId = fragment;
-      }
+    // Keep activeId in sync with the URL fragment (initial load + subsequent hash changes)
+    effect((onCleanup) => {
+      const syncFromHash = () => {
+        this.activeId = window.location.hash.substring(1);
+      };
+
+      syncFromHash();
+      window.addEventListener('hashchange', syncFromHash);
+      onCleanup(() => window.removeEventListener('hashchange', syncFromHash));
     });
 
-    // Reset activeId when main category changes
+    // Reset activeId only when the main category actually changes (skip initial run)
+    let initialized = false;
     effect(() => {
       this.menuService.selectedMainCategoryId();
-      this.activeId = '';
+      if (initialized) {
+        this.activeId = '';
+      } else {
+        initialized = true;
+      }
     });
   }
 
