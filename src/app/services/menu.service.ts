@@ -1,6 +1,11 @@
 import { Injectable, signal, computed, effect } from '@angular/core';
-import { MenuData, OrderState, MainCategory } from '../models/menu.model';
+import { MenuData, OrderState, MainCategory, Product } from '../models/menu.model';
 import menuDataJson from '../data/menu.json';
+
+export interface OrderItem {
+  product: Product;
+  quantity: number;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +16,7 @@ export class MenuService {
   public readonly menuData = this._menuData.asReadonly();
 
   // Selection State
-  public readonly selectedMainCategoryId = signal<'drink' | 'food'>('drink');
+  public readonly selectedMainCategoryId = signal<string>(this._menuData().categories[0]?.id || '');
 
   public readonly currentMainCategory = computed(() =>
     this._menuData().categories.find(c => c.id === this.selectedMainCategoryId())
@@ -19,8 +24,37 @@ export class MenuService {
 
   // Order State
   private readonly _orderState = signal<OrderState>(this.loadOrder());
-
   public readonly orderState = this._orderState.asReadonly();
+
+  // Computed Order Details
+  public readonly orderItems = computed<OrderItem[]>(() => {
+    const state = this._orderState();
+    const items: OrderItem[] = [];
+
+    // Find products across all categories
+    this._menuData().categories.forEach(category => {
+      category.subCategories.forEach(sub => {
+        sub.items.forEach(product => {
+          if (state[product.id]) {
+            items.push({
+              product,
+              quantity: state[product.id]
+            });
+          }
+        });
+      });
+    });
+
+    return items;
+  });
+
+  public readonly orderTotal = computed(() => {
+    return this.orderItems().reduce((total, item) => total + (item.product.price * item.quantity), 0);
+  });
+
+  public readonly totalQuantity = computed(() => {
+    return this.orderItems().reduce((total, item) => total + item.quantity, 0);
+  });
 
   constructor() {
     // Persist order state to sessionStorage whenever it changes
@@ -51,5 +85,14 @@ export class MenuService {
 
   public getQuantity(productId: string): number {
     return this._orderState()[productId] || 0;
+  }
+
+  //get all categories
+  public getAllCategories(): MainCategory[] {
+    return this._menuData().categories;
+  }
+
+  public clearOrder() {
+    this._orderState.set({});
   }
 }

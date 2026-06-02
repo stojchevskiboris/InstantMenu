@@ -1,8 +1,25 @@
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
+.sticky-nav {
+    position: sticky;
+    top: 0; /* This will be below the header if header is sticky too, need to adjust if needed */
+    z-index: 1020;
 }
 
-.no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+.nav-pill {
+    text-decoration: none;
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.nav-pill:hover {
+    color: #1a1a1a;
+}
+
+.nav-pill.active {
+    background-color: #1a1a1a;
+    color: #ffffff;
 }
