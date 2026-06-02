@@ -16,10 +16,9 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": {
-              "base": "dist/InstantMenu",
-              "browser": ""
-            },
+            "outputPath": "dist/InstantMenu",
+            "prerender": false,
+            "ssr": false,
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
