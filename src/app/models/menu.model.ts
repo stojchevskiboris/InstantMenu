@@ -23,7 +23,7 @@ export interface SubCategory {
 }
 
 export interface MainCategory {
-  id: 'drink' | 'food';
+  id: string;
   name: string;
   subCategories: SubCategory[];
 }

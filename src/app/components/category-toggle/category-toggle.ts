@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
+import { MainCategory } from '../../models/menu.model';
 
 @Component({
   selector: 'app-category-toggle',
@@ -9,9 +10,11 @@ import { MenuService } from '../../services/menu.service';
 })
 export class CategoryToggleComponent {
   private menuService = inject(MenuService);
+
+  categories: MainCategory[] = this.menuService.getAllCategories();
   selected = this.menuService.selectedMainCategoryId;
 
-  select(id: 'drink' | 'food') {
+  select(id: string) {
     this.menuService.selectedMainCategoryId.set(id);
   }
 }

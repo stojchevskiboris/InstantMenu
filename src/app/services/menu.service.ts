@@ -16,7 +16,7 @@ export class MenuService {
   public readonly menuData = this._menuData.asReadonly();
 
   // Selection State
-  public readonly selectedMainCategoryId = signal<'drink' | 'food'>('drink');
+  public readonly selectedMainCategoryId = signal<string>(this._menuData().categories[0]?.id || '');
 
   public readonly currentMainCategory = computed(() =>
     this._menuData().categories.find(c => c.id === this.selectedMainCategoryId())
@@ -85,6 +85,11 @@ export class MenuService {
 
   public getQuantity(productId: string): number {
     return this._orderState()[productId] || 0;
+  }
+
+  //get all categories
+  public getAllCategories(): MainCategory[] {
+    return this._menuData().categories;
   }
 
   public clearOrder() {
