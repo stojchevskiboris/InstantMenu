@@ -1,4 +1,4 @@
-import { Component, inject, signal, effect } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { CommonModule } from '@angular/common';
 
