@@ -15,12 +15,12 @@
         <div class="quantity-controls ms-2">
           @if (quantity() > 0) {
           <div class="d-flex align-items-center bg-light rounded-pill p-1">
-            <button class="btn-qty" (click)="decrement($event)">
-                <i class="bi bi-dash-lg"></i>
+            <button type="button" class="btn-qty" aria-label="Decrease quantity" (click)="decrement($event)">
+                <i class="bi bi-dash-lg" aria-hidden="true"></i>
             </button>
             <span class="qty-text">{{ quantity() }}</span>
-            <button class="btn-qty" (click)="increment($event)">
-                <i class="bi bi-plus-lg"></i>
+            <button type="button" class="btn-qty" aria-label="Increase quantity" (click)="increment($event)">
+                <i class="bi bi-plus-lg" aria-hidden="true"></i>
             </button>
           </div>
           } @else {
