@@ -27,7 +27,8 @@
                 "input": "node_modules/@fontsource/inter/files",
                 "output": "./assets/fonts/"
               },
-              "src/assets"
+              "src/assets",
+              "src/web.config"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
