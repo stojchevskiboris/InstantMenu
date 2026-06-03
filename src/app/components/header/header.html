@@ -15,7 +15,8 @@
     </div>
     <div class="d-flex gap-2">
       <button type="button" class="btn btn-icon rounded-circle border shadow-sm" data-bs-toggle="collapse"
-        data-bs-target="#infoPanel" aria-controls="infoPanel" aria-expanded="false" aria-label="Toggle venue information">
+        data-bs-target="#infoPanel" aria-controls="infoPanel" aria-expanded="false"
+        aria-label="Toggle venue information">
         <i class="bi bi-info-circle" aria-hidden="true"></i>
       </button>
     </div>
@@ -25,18 +26,23 @@
     <div class="card card-body bg-light border-0 mb-2 small shadow-sm rounded-4">
       <div class="d-flex flex-column gap-2">
         <div class="d-flex align-items-center gap-2">
-            <i class="bi bi-geo-alt text-secondary"></i>
-            <span>{{ venue().address }}</span>
+          <i class="bi bi-geo-alt text-secondary"></i>
+          <span>{{ venue().address }}</span>
         </div>
         <div class="d-flex align-items-center gap-2">
-            <i class="bi bi-telephone text-secondary"></i>
-            <span>{{ venue().phone }}</span>
+          <i class="bi bi-telephone text-secondary"></i>
+          <span>{{ venue().phone }}</span>
         </div>
         <div class="d-flex align-items-center gap-2">
-            <i class="bi bi-wifi text-secondary"></i>
-            <span><strong>Wi-Fi:</strong> {{ venue().wifiPassword }}</span>
+          <i class="bi bi-wifi text-secondary"></i>
+          <span><strong>Wi-Fi:</strong> {{ venue().wifiPassword }}</span>
         </div>
       </div>
     </div>
+  </div>
+
+  <div>
+    Language selector goes here
+    <app-language-selector></app-language-selector>
   </div>
 </header>
