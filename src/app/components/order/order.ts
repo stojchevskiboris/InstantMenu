@@ -1,6 +1,7 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuService } from '../../services/menu.service';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-order',
@@ -11,6 +12,7 @@ import { MenuService } from '../../services/menu.service';
 })
 export class OrderComponent {
   private menuService = inject(MenuService);
+  public languageService = inject(LanguageService);
 
   orderItems = this.menuService.orderItems;
   orderTotal = this.menuService.orderTotal;

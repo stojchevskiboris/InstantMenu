@@ -1,6 +1,7 @@
 import { Component, inject, effect } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { CommonModule } from '@angular/common';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-sticky-nav',
@@ -11,6 +12,8 @@ import { CommonModule } from '@angular/common';
 })
 export class StickyNavComponent {
   private menuService = inject(MenuService);
+  public languageService = inject(LanguageService);
+
   subCategories = () => this.menuService.currentMainCategory()?.subCategories || [];
   activeId = '';
 

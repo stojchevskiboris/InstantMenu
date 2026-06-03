@@ -6,9 +6,9 @@
                 <span class="badge-tag">{{ tag }}</span>
                 }
             </div>
-            <h6 class="mb-1 fw-bold text-theme-main" style="font-size: 1rem;">{{ item().name }}</h6>
+            <h6 class="mb-1 fw-bold text-theme-main" style="font-size: 1rem;">{{ languageService.translateObj(item().name) }}</h6>
             <p class="text-theme-muted mb-3 line-clamp-2" style="font-size: 0.8rem; line-height: 1.4;">
-                {{ item().description }}
+                {{ languageService.translateObj(item().description) }}
             </p>
 
             <div class="mt-auto d-flex align-items-center justify-content-between">
@@ -29,7 +29,7 @@
                     } @else {
                     <button type="button" class="btn btn-qty btn-sm rounded-pill px-4 py-1 fw-bold"
                         style="font-size: 0.85rem;" (click)="increment($event)">
-                        Add
+                        {{ languageService.uiWords()['add'] || 'Add' }}
                     </button>
                     }
                 </div>
@@ -38,12 +38,12 @@
         <div class="col-4 position-relative">
             <div class="image-container h-100 bg-theme-muted border-start">
                 @if (item().photoUrl) {
-                <img [src]="item().photoUrl" class="w-100 h-100 object-fit-cover" [alt]="item().name"
+                <img [src]="item().photoUrl" class="w-100 h-100 object-fit-cover" [alt]="languageService.translateObj(item().name)"
                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 }
                 <div class="placeholder-img w-100 h-100 align-items-center justify-content-center bg-theme-muted text-theme-muted p-2 text-center"
                     style="font-size: 0.7rem; display: none;">
-                    {{ item().name }}
+                    {{ languageService.translateObj(item().name) }}
                 </div>
             </div>
         </div>

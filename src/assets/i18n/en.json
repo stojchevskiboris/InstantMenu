@@ -1,5 +1,14 @@
 {
   "menu_title": "Instant Menu",
   "select_language": "Select Language",
-  "category_drinks": "Drinks"
+  "category_drinks": "Drinks",
+  "wifi": "Wi-Fi",
+  "add": "Add",
+  "items": "items",
+  "your_selection": "Your Selection",
+  "subtotal": "Subtotal",
+  "total": "Total",
+  "clear_order": "Clear Order",
+  "view_order": "View Order",
+  "items_selected": "items selected"
 }

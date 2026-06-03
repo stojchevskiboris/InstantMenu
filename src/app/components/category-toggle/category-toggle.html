@@ -5,7 +5,7 @@
                 class="btn btn-sm flex-fill rounded-pill border-0 transition-all"
                 [class.active]="selected() === category.id"
                 (click)="select(category.id)">
-                {{ category.name }}
+                {{ languageService.translateObj(category.name) }}
             </button>
         }
     </div>

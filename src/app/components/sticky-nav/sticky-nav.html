@@ -5,7 +5,7 @@
                class="nav-pill text-nowrap"
                [class.active]="activeId === 'sub-' + sub.id"
                (click)="setActive('sub-' + sub.id)">
-                {{ sub.name }}
+                {{ languageService.translateObj(sub.name) }}
             </a>
         }
     </div>
