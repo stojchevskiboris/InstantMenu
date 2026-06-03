@@ -11,6 +11,10 @@
   --accent-color: #f59e0b;
   --bg-app: #ffffff;
   --bg-page: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-muted: #f8f9fa;
+  --text-main: #1a1a1a;
+  --text-muted: #64748b;
   --border-color: #e2e8f0;
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -20,14 +24,30 @@
   --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+[data-theme='dark'] {
+  --primary-color: #f8f9fa;
+  --secondary-color: #94a3b8;
+  --accent-color: #fbbf24;
+  --bg-app: #111827;
+  --bg-page: #030712;
+  --bg-card: #1f2937;
+  --bg-muted: #374151;
+  --text-main: #f8f9fa;
+  --text-muted: #94a3b8;
+  --border-color: #374151;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--bg-page);
   margin: 0;
   padding: 0;
-  color: var(--primary-color);
+  color: var(--text-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Constrain app to mobile width on desktop */
@@ -39,6 +59,7 @@ app-root {
   background-color: var(--bg-app);
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
   position: relative;
+  transition: background-color 0.3s ease;
 }
 
 /* Custom scrollbar */
@@ -52,7 +73,7 @@ app-root {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: var(--border-color);
   border-radius: 10px;
 }
 
@@ -70,6 +91,8 @@ app-root {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
+  background-color: var(--bg-card);
+  color: var(--text-main);
   transition: var(--transition);
 }
 
@@ -92,8 +115,17 @@ app-root {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: -0.025em;
+  color: var(--text-main);
 }
 
 .text-muted {
-  color: var(--secondary-color) !important;
+  color: var(--text-muted) !important;
 }
+
+/* Theme helper classes */
+.bg-theme-app { background-color: var(--bg-app) !important; }
+.bg-theme-card { background-color: var(--bg-card) !important; }
+.bg-theme-muted { background-color: var(--bg-muted) !important; }
+.border-theme { border-color: var(--border-color) !important; }
+.text-theme-main { color: var(--text-main) !important; }
+.text-theme-muted { color: var(--text-muted) !important; }

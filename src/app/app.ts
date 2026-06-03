@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { HeaderComponent } from "./components/header/header";
 import { CategoryToggleComponent } from "./components/category-toggle/category-toggle";
 import { StickyNavComponent } from "./components/sticky-nav/sticky-nav";
 import { MenuListComponent } from "./components/menu-list/menu-list";
 import { OrderComponent } from "./components/order/order";
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -18,4 +19,6 @@ import { OrderComponent } from "./components/order/order";
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {}
+export class App {
+  private themeService = inject(ThemeService);
+}

@@ -1,0 +1,44 @@
+<div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden bg-theme-card">
+    <div class="position-relative">
+        @if (item().photoUrl) {
+        <div class="image-container">
+            <img [src]="item().photoUrl" class="card-img-top" [alt]="item().name"
+                style="height: 160px; object-fit: cover;">
+        </div>
+        } @else {
+        <div class="image-container d-flex align-items-center justify-content-center bg-theme-muted">
+            <i class="bi bi-image text-theme-muted fs-1 opacity-25"></i>
+        </div>
+        }
+
+        @if (item().tags && item().tags!.length > 0) {
+        <div class="position-absolute top-0 start-0 p-2">
+            <span class="badge-tag shadow-sm">{{ item().tags![0] }}</span>
+        </div>
+        }
+
+        <div class="position-absolute bottom-0 end-0 p-2">
+            <div class="d-flex align-items-center bg-theme-card rounded-pill shadow-sm border p-1">
+                @if (quantity() > 0) {
+                <button class="btn-qty" (click)="decrement($event)">
+                    <i class="bi bi-dash"></i>
+                </button>
+                <span class="qty-text">{{ quantity() }}</span>
+                }
+                <button class="btn-qty" (click)="increment($event)">
+                    <i class="bi bi-plus-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body p-3">
+        <div class="d-flex justify-content-between align-items-start mb-1">
+            <h6 class="card-title mb-0 fw-bold text-theme-main">{{ item().name }}</h6>
+            <span class="fw-bold text-primary">{{ item().price | currency }}</span>
+        </div>
+        <p class="card-text text-theme-muted small line-clamp-2 mb-0">
+            {{ item().description }}
+        </p>
+    </div>
+</div>

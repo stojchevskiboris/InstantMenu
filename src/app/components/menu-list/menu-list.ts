@@ -16,8 +16,6 @@ export class MenuListComponent {
 
   highlightedId = signal<string | null>(null);
 
-  categoryElements = viewChildren<ElementRef>('categorySection');
-
   constructor() {
     effect((onCleanup) => {
       const handler = () => {

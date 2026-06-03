@@ -1,12 +1,14 @@
 .sticky-nav {
     position: sticky;
-    top: 0; /* This will be below the header if header is sticky too, need to adjust if needed */
+    top: 0;
     z-index: 1020;
+    background-color: var(--bg-app);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .nav-pill {
     text-decoration: none;
-    color: #64748b;
+    color: var(--text-muted);
     font-size: 0.85rem;
     font-weight: 600;
     padding: 0.5rem 1rem;
@@ -16,10 +18,10 @@
 }
 
 .nav-pill:hover {
-    color: #1a1a1a;
+    color: var(--text-main);
 }
 
 .nav-pill.active {
-    background-color: #1a1a1a;
-    color: #ffffff;
+    background-color: var(--primary-color);
+    color: var(--bg-app);
 }

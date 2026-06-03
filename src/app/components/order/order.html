@@ -1,47 +1,73 @@
 @if (totalQuantity() > 0) {
-<div class="order-container fixed-bottom mx-auto px-3 pb-3" [class.expanded]="isExpanded()">
-    <div class="order-card shadow-lg rounded-4 overflow-hidden bg-white border">
-        <!-- Expanded View -->
-        @if (isExpanded()) {
-        <div class="order-details p-3 border-bottom">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h6 class="fw-bold mb-0">Your Order</h6>
-                <button type="button" class="btn btn-link btn-sm text-danger p-0 text-decoration-none fw-bold" (click)="clearOrder()">Clear All</button>
+<div class="fixed-bottom order-container mx-auto px-3 pb-3">
+    <!-- Order Details Card (Collapsible) -->
+    <div class="collapse mb-2" id="orderDetails">
+        <div class="card order-card shadow-lg rounded-4 overflow-hidden border-0 bg-theme-card">
+            <div class="card-header bg-transparent border-bottom p-3 d-flex justify-content-between align-items-center">
+                <h6 class="mb-0 fw-bold">Your Selection</h6>
+                <button type="button" class="btn-close" data-bs-toggle="collapse" data-bs-target="#orderDetails"
+                    aria-label="Close"></button>
             </div>
-            <div class="order-items-list no-scrollbar" style="max-height: 300px; overflow-y: auto;">
-                @for (item of orderItems(); track item.product.id) {
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <div class="d-flex flex-column">
-                        <span class="fw-semibold small">{{ item.product.name }}</span>
-                        <span class="text-muted extra-small">{{ item.product.price | currency }} each</span>
+            <div class="card-body p-0 overflow-auto" style="max-height: 40vh;">
+                <div class="order-items-list p-3">
+                    @for (item of orderItems(); track item.product.id) {
+                    <div class="d-flex align-items-center justify-content-between mb-3 last-mb-0">
+                        <div class="d-flex align-items-center gap-3">
+                            @if (item.product.photoUrl) {
+                            <img [src]="item.product.photoUrl" [alt]="item.product.name" class="rounded-3"
+                                style="width: 48px; height: 48px; object-fit: cover;">
+                            } @else {
+                            <div class="bg-theme-muted rounded-3 d-flex align-items-center justify-content-center"
+                                style="width: 48px; height: 48px;">
+                                <i class="bi bi-cup-hot text-theme-muted"></i>
+                            </div>
+                            }
+                            <div>
+                                <h6 class="mb-0 fw-bold small">{{ item.product.name }}</h6>
+                                <span class="text-theme-muted extra-small">{{ item.product.price | currency }}</span>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <button class="btn-qty-sm" (click)="decrement(item.product.id)">
+                                <i class="bi bi-dash"></i>
+                            </button>
+                            <span class="qty-text-sm">{{ item.quantity }}</span>
+                            <button class="btn-qty-sm" (click)="increment(item.product.id)">
+                                <i class="bi bi-plus"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="d-flex align-items-center gap-2">
-                        <button class="btn-qty-sm" (click)="decrement(item.product.id)">
-                            <i class="bi bi-dash"></i>
-                        </button>
-                        <span class="qty-text-sm">{{ item.quantity }}</span>
-                        <button class="btn-qty-sm" (click)="increment(item.product.id)">
-                            <i class="bi bi-plus"></i>
-                        </button>
-                    </div>
+                    }
                 </div>
-                }
+            </div>
+            <div class="card-footer bg-theme-muted border-top p-3">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="text-theme-muted small">Subtotal</span>
+                    <span class="fw-bold">{{ orderTotal() | currency }}</span>
+                </div>
+                <button class="btn btn-outline-danger btn-sm w-100 rounded-3" (click)="clearOrder()">
+                    Clear Order
+                </button>
             </div>
         </div>
-        }
+    </div>
 
-        <!-- Bottom Summary Bar (Always visible if qty > 0) -->
-        <div class="order-summary p-3 d-flex align-items-center justify-content-between bg-dark text-white" (click)="toggleExpand()" style="cursor: pointer;">
-            <div class="d-flex align-items-center gap-2">
-                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 24px; height: 24px; font-size: 0.75rem;">
-                    {{ totalQuantity() }}
-                </div>
-                <span class="fw-bold small">View Order</span>
+    <!-- Summary Bar -->
+    <div class="order-summary bg-primary text-white rounded-pill shadow-lg p-2 d-flex align-items-center justify-content-between"
+        data-bs-toggle="collapse" data-bs-target="#orderDetails" role="button">
+        <div class="d-flex align-items-center ms-3">
+            <div class="bg-theme-app text-theme-main rounded-circle d-flex align-items-center justify-content-center fw-bold me-3"
+                style="width: 32px; height: 32px; font-size: 0.9rem;">
+                {{ totalQuantity() }}
             </div>
-            <div class="d-flex align-items-center gap-2">
-                <span class="fw-bold">{{ orderTotal() | currency }}</span>
-                <i class="bi" [class.bi-chevron-up]="!isExpanded()" [class.bi-chevron-down]="isExpanded()"></i>
+            <div>
+                <span class="d-block fw-bold" style="font-size: 0.9rem; line-height: 1.2;">View Order</span>
+                <span class="extra-small opacity-75">{{ orderItems().length }} items selected</span>
             </div>
+        </div>
+        <div class="me-3 text-end">
+            <span class="d-block extra-small opacity-75">Total</span>
+            <span class="fw-bold" style="font-size: 1.1rem;">{{ orderTotal() | currency }}</span>
         </div>
     </div>
 </div>
