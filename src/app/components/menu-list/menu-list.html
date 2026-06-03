@@ -1,26 +1,28 @@
 <div class="px-4 py-3">
     @for (sub of subCategories(); track sub.id) {
-        <div class="mb-5 category-section" [id]="'sub-' + sub.id" [class.highlighted]="highlightedId() === 'sub-' + sub.id">
-            <div class="d-flex align-items-center justify-content-between mb-4">
-                <h5 class="mb-0 fw-bold">{{ sub.name }}</h5>
-                <span class="badge bg-theme-muted text-theme-muted rounded-pill px-3 py-2 border fw-normal" style="font-size: 0.75rem;">
-                    {{ sub.items.length }} items
-                </span>
-            </div>
+    <div class="mb-2 pt-3 pb-2 category-section" [id]="'sub-' + sub.id"
+        [class.highlighted]="highlightedId() === 'sub-' + sub.id">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h5 class="mb-0 fw-bold">{{ sub.name }}</h5>
+            <span class="badge bg-theme-muted text-theme-muted rounded-pill px-3 py-2 border fw-normal"
+                style="font-size: 0.75rem;">
+                {{ sub.items.length }} items
+            </span>
+        </div>
 
-            <div class="row g-3">
-                @for (item of sub.items; track item.id) {
-                    <div class="col-12 col-sm-6">
-                        <app-menu-item [item]="item"></app-menu-item>
-                    </div>
-                }
+        <div class="row g-3">
+            @for (item of sub.items; track item.id) {
+            <div class="col-12">
+                <app-menu-item [item]="item"></app-menu-item>
             </div>
+            }
         </div>
+    </div>
     } @empty {
-        <div class="text-center py-5">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
+    <div class="text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
         </div>
+    </div>
     }
 </div>

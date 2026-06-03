@@ -2,13 +2,17 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
-    "types": [],
+    "rootDir": "./",
+    "types": [
+      "vite/client"
+    ],
     "resolveJsonModule": true
   },
   "files": [
     "src/main.ts"
   ],
   "include": [
+    "src/**/*.ts",
     "src/**/*.d.ts"
   ]
 }
