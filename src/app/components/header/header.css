@@ -30,3 +30,11 @@ header {
     background-color: var(--bg-app);
     border-bottom: 1px solid var(--border-color);
 }
+
+.dropdown-item.text-theme-main:hover,
+.dropdown-item.text-theme-main:focus,
+.dropdown-item.text-theme-main:active {
+    background-color: #8e8e8e36 !important;
+    /* Keeps the text color exactly the same on hover */
+    color: inherit;
+}

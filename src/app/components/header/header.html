@@ -34,9 +34,11 @@
           <i class="bi bi-translate" aria-hidden="true"></i>
         </button>
 
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+        <ul class="dropdown-menu dropdown-menu-end bg-theme-muted" aria-labelledby="dropdownMenuButton">
           @for (lang of languages | keyvalue; track lang.key) {
-          <li><a class="dropdown-item" (click)="switchLanguage(lang.key)">{{ lang.value }}</a></li>
+          <li>
+            <a class="dropdown-item text-theme-main" (click)="switchLanguage(lang.key)">{{ lang.value }}</a>
+          </li>
           }
         </ul>
       </div>
