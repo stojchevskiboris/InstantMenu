@@ -1,4 +1,4 @@
-<div class="px-4 py-3">
+<div class="px-4 py-3 mb-5">
     @for (sub of subCategories(); track sub.id) {
     <div class="mb-2 pt-3 pb-2 category-section" [id]="'sub-' + sub.id"
         [class.highlighted]="highlightedId() === 'sub-' + sub.id">
