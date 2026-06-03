@@ -16,14 +16,6 @@ export class OrderComponent {
   orderTotal = this.menuService.orderTotal;
   totalQuantity = this.menuService.totalQuantity;
 
-  isExpanded = signal(false);
-
-  toggleExpand() {
-    if (this.totalQuantity() > 0) {
-      this.isExpanded.update(v => !v);
-    }
-  }
-
   increment(productId: string) {
     this.menuService.updateQuantity(productId, 1);
   }
@@ -34,6 +26,5 @@ export class OrderComponent {
 
   clearOrder() {
     this.menuService.clearOrder();
-    this.isExpanded.set(false);
   }
 }

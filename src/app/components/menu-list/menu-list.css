@@ -8,7 +8,7 @@
 }
 
 .category-section.highlighted {
-    background-color: #fef3c7; /* light yellow highlight */
+    background-color: rgba(251, 191, 36, 0.1);
     animation: pulse-highlight 2s ease-out;
 }
 
@@ -19,7 +19,7 @@
 }
 
 h5 {
-    color: #1a1a1a;
+    color: var(--text-main);
     position: relative;
     display: inline-block;
 }
@@ -31,6 +31,6 @@ h5::after {
     left: 0.25rem;
     width: 2rem;
     height: 3px;
-    background-color: #1a1a1a;
+    background-color: var(--text-main);
     border-radius: 99px;
 }

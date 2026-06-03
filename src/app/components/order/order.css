@@ -6,6 +6,8 @@
 
 .order-card {
     transition: var(--transition);
+    background-color: var(--bg-app);
+    border-top: 1px solid var(--border-color);
 }
 
 .order-items-list {
@@ -21,8 +23,9 @@
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    border: 1px solid #e2e8f0;
-    background: #f8f9fa;
+    border: 1px solid var(--border-color);
+    background: var(--bg-muted);
+    color: var(--text-main);
     display: flex;
     align-items: center;
     justify-content: center;
