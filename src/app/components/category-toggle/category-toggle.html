@@ -1,10 +1,12 @@
-<div class="px-4 py-3 bg-white">
-  <div class="toggle-container p-1 bg-light rounded-pill d-flex">
-    @for (category of categories; track $index) {
-      <button class="btn flex-fill rounded-pill py-2 fw-bold transition-all border-0"
-        [class.active]="selected() === category.id" (click)="select(category.id)">
-        {{ category.name }}
-      </button>
-    }
-  </div>
+<div class="px-4 py-2 bg-theme-app">
+    <div class="toggle-container d-flex p-1 rounded-pill bg-theme-muted">
+        @for (category of categories; track category.id) {
+            <button
+                class="btn btn-sm flex-fill rounded-pill border-0 transition-all"
+                [class.active]="selected() === category.id"
+                (click)="select(category.id)">
+                {{ category.name }}
+            </button>
+        }
+    </div>
 </div>

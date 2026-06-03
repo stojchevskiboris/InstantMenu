@@ -15,7 +15,6 @@ export class StickyNavComponent {
   activeId = '';
 
   constructor() {
-    // Keep activeId in sync with the URL fragment (initial load + subsequent hash changes)
     effect((onCleanup) => {
       const syncFromHash = () => {
         this.activeId = window.location.hash.substring(1);
@@ -26,7 +25,6 @@ export class StickyNavComponent {
       onCleanup(() => window.removeEventListener('hashchange', syncFromHash));
     });
 
-    // Reset activeId only when the main category actually changes (skip initial run)
     let initialized = false;
     effect(() => {
       this.menuService.selectedMainCategoryId();
@@ -40,7 +38,5 @@ export class StickyNavComponent {
 
   setActive(id: string) {
     this.activeId = id;
-    // We could use an emitter here if we wanted to trigger the highlight manually,
-    // but the effect in MenuListComponent watching the fragment should handle it.
   }
 }

@@ -1,13 +1,17 @@
 import { Component, inject, computed } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
+import { ThemeService } from '../../services/theme.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
 export class HeaderComponent {
   private menuService = inject(MenuService);
+  public themeService = inject(ThemeService);
   venue = computed(() => this.menuService.menuData().venue);
 }

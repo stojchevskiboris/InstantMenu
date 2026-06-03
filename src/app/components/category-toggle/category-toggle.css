@@ -1,14 +1,15 @@
 .toggle-container {
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-muted);
 }
 
 .btn {
-    color: #64748b;
+    color: var(--text-muted);
     font-size: 0.9rem;
 }
 
 .btn.active {
-    background-color: #ffffff;
-    color: #1a1a1a;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    box-shadow: var(--shadow-sm);
 }

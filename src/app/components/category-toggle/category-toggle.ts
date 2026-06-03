@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { MainCategory } from '../../models/menu.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-category-toggle',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './category-toggle.html',
   styleUrl: './category-toggle.css',
 })
