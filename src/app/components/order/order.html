@@ -14,8 +14,10 @@
                     <div class="d-flex align-items-center justify-content-between mb-3 last-mb-0">
                         <div class="d-flex align-items-center gap-3">
                             @if (item.product.photoUrl) {
-                            <img [src]="item.product.photoUrl" [alt]="languageService.translateObj(item.product.name)" class="rounded-3"
-                                style="width: 48px; height: 48px; object-fit: cover;">
+                            <img [src]="'assets/products'+item.product.photoUrl"
+                                [alt]="languageService.translateObj(item.product.name)" class="rounded-3"
+                                style="width: 48px; height: 48px; object-fit: cover;"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                             } @else {
                             <div class="bg-theme-muted rounded-3 d-flex align-items-center justify-content-center"
                                 style="width: 48px; height: 48px;">
@@ -23,7 +25,8 @@
                             </div>
                             }
                             <div>
-                                <h6 class="mb-0 fw-bold small">{{ languageService.translateObj(item.product.name) }}</h6>
+                                <h6 class="mb-0 fw-bold small">{{ languageService.translateObj(item.product.name) }}
+                                </h6>
                                 <span class="text-theme-muted extra-small">{{ item.product.price | currency }}</span>
                             </div>
                         </div>
@@ -42,7 +45,8 @@
             </div>
             <div class="card-footer bg-theme-muted border-top p-3">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="text-theme-muted small">{{ languageService.uiWords()['subtotal'] || 'Subtotal' }}</span>
+                    <span class="text-theme-muted small">{{ languageService.uiWords()['subtotal'] || 'Subtotal'
+                        }}</span>
                     <span class="fw-bold">{{ orderTotal() | currency }}</span>
                 </div>
                 <button class="btn btn-outline-danger btn-sm w-100 rounded-3" (click)="clearOrder()">
@@ -61,8 +65,10 @@
                 {{ totalQuantity() }}
             </div>
             <div>
-                <span class="d-block fw-bold" style="font-size: 0.9rem; line-height: 1.2;">{{ languageService.uiWords()['view_order'] || 'View Order' }}</span>
-                <span class="extra-small opacity-75">{{ orderItems().length }} {{ languageService.uiWords()['items_selected'] || 'items selected' }}</span>
+                <span class="d-block fw-bold" style="font-size: 0.9rem; line-height: 1.2;">{{
+                    languageService.uiWords()['view_order'] || 'View Order' }}</span>
+                <span class="extra-small opacity-75">{{ orderItems().length }} {{
+                    languageService.uiWords()['items_selected'] || 'items selected' }}</span>
             </div>
         </div>
         <div class="me-3 text-end">

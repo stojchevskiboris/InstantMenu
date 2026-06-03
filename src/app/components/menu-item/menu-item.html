@@ -6,7 +6,8 @@
                 <span class="badge-tag">{{ tag }}</span>
                 }
             </div>
-            <h6 class="mb-1 fw-bold text-theme-main" style="font-size: 1rem;">{{ languageService.translateObj(item().name) }}</h6>
+            <h6 class="mb-1 fw-bold text-theme-main" style="font-size: 1rem;">{{
+                languageService.translateObj(item().name) }}</h6>
             <p class="text-theme-muted mb-3 line-clamp-2" style="font-size: 0.8rem; line-height: 1.4;">
                 {{ languageService.translateObj(item().description) }}
             </p>
@@ -38,7 +39,8 @@
         <div class="col-4 position-relative">
             <div class="image-container h-100 bg-theme-muted border-start">
                 @if (item().photoUrl) {
-                <img [src]="item().photoUrl" class="w-100 h-100 object-fit-cover" [alt]="languageService.translateObj(item().name)"
+                <img [src]="'assets/products'+item().photoUrl" class="w-100 h-100 object-fit-cover"
+                    [alt]="languageService.translateObj(item().name)"
                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 }
                 <div class="placeholder-img w-100 h-100 align-items-center justify-content-center bg-theme-muted text-theme-muted p-2 text-center"
