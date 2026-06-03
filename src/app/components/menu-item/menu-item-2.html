@@ -2,7 +2,7 @@
     <div class="position-relative">
         @if (item().photoUrl) {
         <div class="image-container">
-            <img [src]="item().photoUrl" class="card-img-top" [alt]="item().name"
+            <img [src]="'assets/products'+item().photoUrl" class="card-img-top" [alt]="item().name"
                 style="height: 160px; object-fit: cover;">
         </div>
         } @else {

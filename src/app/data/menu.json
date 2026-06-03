@@ -21,8 +21,10 @@
               "name": "Signature Martini",
               "description": "Gin, Dry Vermouth, Lemon Twist",
               "price": 12.0,
-              "photoUrl": "/martini.jpg",
-              "tags": ["Chef's Special"]
+              "photoUrl": "/martini.png",
+              "tags": [
+                "Chef's Special"
+              ]
             },
             {
               "id": "d2",
@@ -69,7 +71,9 @@
               "description": "Fresh mint, lime, soda",
               "price": 6.0,
               "photoUrl": "/mojito.jpg",
-              "tags": ["Refreshing"]
+              "tags": [
+                "Refreshing"
+              ]
             }
           ]
         }
@@ -89,7 +93,9 @@
               "description": "Buffalo style with blue cheese dip",
               "price": 10.0,
               "photoUrl": "/wings.jpg",
-              "tags": ["Spicy"]
+              "tags": [
+                "Spicy"
+              ]
             },
             {
               "id": "f2",
@@ -97,7 +103,9 @@
               "description": "Parmesan, truffle oil, herbs",
               "price": 8.0,
               "photoUrl": "/fries.jpg",
-              "tags": ["Vegan"]
+              "tags": [
+                "Vegan"
+              ]
             }
           ]
         },
