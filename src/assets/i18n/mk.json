@@ -1,5 +1,14 @@
 {
   "menu_title": "Инстант Мени",
   "select_language": "Изберете јазик",
-  "category_drinks": "Пијалоци"
+  "category_drinks": "Пијалоци",
+  "wifi": "Wi-Fi",
+  "add": "Додади",
+  "items": "производи",
+  "your_selection": "Вашиот избор",
+  "subtotal": "Меѓузбир",
+  "total": "Вкупно",
+  "clear_order": "Испразни нарачка",
+  "view_order": "Види нарачка",
+  "items_selected": "избрани производи"
 }

@@ -1,16 +1,16 @@
 export interface VenueInfo {
-  name: string;
+  name: { [key: string]: string };
   logoUrl: string;
   wifiPassword?: string;
-  hours: string;
-  address: string;
+  hours: { [key: string]: string };
+  address: { [key: string]: string };
   phone: string;
 }
 
 export interface Product {
   id: string;
-  name: string;
-  description: string;
+  name: { [key: string]: string };
+  description: { [key: string]: string };
   price: number;
   photoUrl: string;
   tags?: string[];
@@ -18,13 +18,13 @@ export interface Product {
 
 export interface SubCategory {
   id: string;
-  name: string;
+  name: { [key: string]: string };
   items: Product[];
 }
 
 export interface MainCategory {
   id: string;
-  name: string;
+  name: { [key: string]: string };
   subCategories: SubCategory[];
 }
 

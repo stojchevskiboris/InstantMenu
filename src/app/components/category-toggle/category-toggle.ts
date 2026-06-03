@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { MainCategory } from '../../models/menu.model';
 import { CommonModule } from '@angular/common';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-category-toggle',
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CategoryToggleComponent {
   private menuService = inject(MenuService);
+  public languageService = inject(LanguageService);
 
   categories: MainCategory[] = this.menuService.getAllCategories();
   selected = this.menuService.selectedMainCategoryId;
