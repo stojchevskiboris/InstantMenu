@@ -16,6 +16,10 @@ export class MenuItemComponent {
   private menuService = inject(MenuService);
   public languageService = inject(LanguageService);
 
+  openDetails() {
+    this.menuService.setSelectedProduct(this.item());
+  }
+
   quantity = computed(() => this.menuService.getQuantity(this.item().id));
 
   increment(event: Event) {

@@ -52,6 +52,8 @@ export class MenuService {
     return this.orderItems().reduce((total, item) => total + (item.product.price * item.quantity), 0);
   });
 
+  public readonly selectedProduct = signal<Product | null>(null);
+
   public readonly totalQuantity = computed(() => {
     return this.orderItems().reduce((total, item) => total + item.quantity, 0);
   });
@@ -90,6 +92,10 @@ export class MenuService {
   //get all categories
   public getAllCategories(): MainCategory[] {
     return this._menuData().categories;
+  }
+
+  public setSelectedProduct(product: Product | null) {
+    this.selectedProduct.set(product);
   }
 
   public clearOrder() {
