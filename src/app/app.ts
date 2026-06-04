@@ -4,6 +4,7 @@ import { CategoryToggleComponent } from "./components/category-toggle/category-t
 import { StickyNavComponent } from "./components/sticky-nav/sticky-nav";
 import { MenuListComponent } from "./components/menu-list/menu-list";
 import { OrderComponent } from "./components/order/order";
+import { ItemDetailsModalComponent } from './components/item-details-modal/item-details-modal';
 import { ThemeService } from './services/theme.service';
 
 @Component({
@@ -14,7 +15,8 @@ import { ThemeService } from './services/theme.service';
     CategoryToggleComponent,
     StickyNavComponent,
     MenuListComponent,
-    OrderComponent
+    OrderComponent,
+    ItemDetailsModalComponent
 ],
   templateUrl: './app.html',
   styleUrl: './app.css'
