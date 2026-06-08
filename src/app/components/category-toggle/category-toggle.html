@@ -1,7 +1,7 @@
 <div class="px-4 py-2 bg-theme-app">
     <div class="toggle-container d-flex p-1 rounded-pill bg-theme-muted">
         @for (category of categories; track category.id) {
-        <button class="btn btn-sm flex-fill rounded-pill border-0 transition-all"
+        <button class="btn btn-sm fw-bold flex-fill rounded-pill border-0 transition-all"
             [class.active]="selected() === category.id" (click)="select(category.id)">
             {{ category.name | translate }}
         </button>

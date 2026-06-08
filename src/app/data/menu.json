@@ -6,10 +6,8 @@
     },
     "logoUrl": "/logo.png",
     "wifiPassword": "velvet_lounge_2024",
-    "hours": {
-      "mk": "18:00 - 02:00",
-      "en": "18:00 - 02:00"
-    },
+    "openHour": "10:00",
+    "closeHour": "01:00",
     "address": {
       "mk": "ул. Ноќен живот 123, Центар",
       "en": "123 Nightlife St, City Center"

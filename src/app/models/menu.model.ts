@@ -2,7 +2,8 @@ export interface VenueInfo {
   name: { [key: string]: string };
   logoUrl: string;
   wifiPassword?: string;
-  hours: { [key: string]: string };
+  openHour?: string;
+  closeHour?: string;
   address: { [key: string]: string };
   phone: string;
 }

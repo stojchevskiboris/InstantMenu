@@ -1,11 +1,17 @@
 .status-dot {
     width: 8px;
     height: 8px;
-    background-color: #10b981;
+    background-color: #b20000;
     border-radius: 50%;
     display: inline-block;
     box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
 }
+
+.open {
+    background-color: #10b981 !important;
+}
+
+
 
 .btn-icon {
     width: 40px;
