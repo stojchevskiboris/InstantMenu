@@ -16,6 +16,7 @@ export class ThemeService {
       const currentTheme = this.themeSignal();
       document.documentElement.setAttribute('data-theme', currentTheme);
       localStorage.setItem(this.THEME_KEY, currentTheme);
+      this.updateFavicon(currentTheme);
     });
   }
 
@@ -39,5 +40,12 @@ export class ThemeService {
     }
 
     return 'light';
+  }
+
+  private updateFavicon(theme: Theme): void {
+    const favicon = document.getElementById('app-favicon') as HTMLLinkElement;
+    if (favicon) {
+      favicon.href = theme === 'dark' ? 'assets/favicon-dark.ico' : 'assets/favicon.ico';
+    }
   }
 }
