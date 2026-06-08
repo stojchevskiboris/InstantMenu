@@ -1,18 +1,17 @@
 import { Component, inject, effect } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { CommonModule } from '@angular/common';
-import { LanguageService } from '../../services/language.service';
+import { TranslatePipe } from '../../pipes/translate-pipe';
 
 @Component({
   selector: 'app-sticky-nav',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './sticky-nav.html',
   styleUrl: './sticky-nav.css',
 })
 export class StickyNavComponent {
   private menuService = inject(MenuService);
-  public languageService = inject(LanguageService);
 
   subCategories = () => this.menuService.currentMainCategory()?.subCategories || [];
   activeId = '';

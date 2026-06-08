@@ -57,10 +57,16 @@ export class LanguageService {
     }
   }
 
-  public translateObj(multilangObject: { [key: string]: string } | undefined): string {
+  public translateObj(multilangObject: { [key: string]: string } | string | undefined): string {
     if (!multilangObject) return '';
     const activeLang = this._currentLang() || this.defaultLang;
-    return multilangObject[activeLang] || multilangObject[this.defaultLang] || Object.values(multilangObject)[0] || '';
+    return typeof multilangObject === 'string'
+      ? multilangObject
+      : multilangObject[activeLang] || multilangObject[this.defaultLang] || Object.values(multilangObject)[0] || '';
+  }
+
+  public translateUi(uiWord: string): string {
+    return this.uiWords()[uiWord];
   }
 
   private async fallbackToDefault(failedLang: string) {

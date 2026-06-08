@@ -2,19 +2,18 @@ import { Component, input, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../models/menu.model';
 import { MenuService } from '../../services/menu.service';
-import { LanguageService } from '../../services/language.service';
+import { TranslatePipe } from '../../pipes/translate-pipe';
 
 @Component({
   selector: 'app-menu-item',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './menu-item.html',
   styleUrl: './menu-item.css',
 })
 export class MenuItemComponent {
   item = input.required<Product>();
   private menuService = inject(MenuService);
-  public languageService = inject(LanguageService);
 
   quantity = computed(() => this.menuService.getQuantity(this.item().id));
 

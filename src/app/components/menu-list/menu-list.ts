@@ -2,18 +2,17 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, signal, effect } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { MenuItemComponent } from '../menu-item/menu-item';
-import { LanguageService } from '../../services/language.service';
+import { TranslatePipe } from '../../pipes/translate-pipe';
 
 @Component({
   selector: 'app-menu-list',
   standalone: true,
-  imports: [CommonModule, MenuItemComponent],
+  imports: [CommonModule, MenuItemComponent, TranslatePipe],
   templateUrl: './menu-list.html',
   styleUrl: './menu-list.css',
 })
 export class MenuListComponent {
   private menuService = inject(MenuService);
-  public languageService = inject(LanguageService);
 
   subCategories = () => this.menuService.currentMainCategory()?.subCategories || [];
 

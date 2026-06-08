@@ -1,12 +1,10 @@
 <div class="sticky-nav px-3 py-2 bg-theme-app border-bottom">
     <div class="d-flex overflow-auto no-scrollbar gap-2 py-1">
         @for (sub of subCategories(); track sub.id) {
-            <a [href]="'#sub-' + sub.id"
-               class="nav-pill text-nowrap"
-               [class.active]="activeId === 'sub-' + sub.id"
-               (click)="setActive('sub-' + sub.id)">
-                {{ languageService.translateObj(sub.name) }}
-            </a>
+        <a [href]="'#sub-' + sub.id" class="nav-pill text-nowrap" [class.active]="activeId === 'sub-' + sub.id"
+            (click)="setActive('sub-' + sub.id)">
+            {{ sub.name | translate }}
+        </a>
         }
     </div>
 </div>
