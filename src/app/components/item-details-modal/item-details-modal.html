@@ -1,0 +1,28 @@
+@if (menuService.selectedProduct(); as item) {
+<div class="modal-backdrop d-flex align-items-center justify-content-center p-3" (click)="close()">
+    <div class="modal-content-container bg-theme-app rounded-4 overflow-hidden shadow-lg position-relative" (click)="$event.stopPropagation()">
+        <button type="button" class="btn-close-modal position-absolute top-0 end-0 m-3 z-3" aria-label="Close" (click)="close()">
+            <i class="bi bi-x-lg"></i>
+        </button>
+
+        <div class="modal-image-container bg-theme-muted">
+            @if (item.photoUrl) {
+            <img [src]="'assets/products' + item.photoUrl" class="w-100 h-100 object-fit-cover"
+                [alt]="languageService.translateObj(item.name)"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            }
+            <div class="placeholder-img w-100 h-100 align-items-center justify-content-center bg-theme-muted text-theme-muted p-2 text-center"
+                style="font-size: 1rem; display: none;">
+                {{ languageService.translateObj(item.name) }}
+            </div>
+        </div>
+
+        <div class="p-4">
+            <h4 class="mb-2 fw-bold text-theme-main">{{ languageService.translateObj(item.name) }}</h4>
+            <p class="text-theme-muted mb-0" style="font-size: 1rem; line-height: 1.6;">
+                {{ languageService.translateObj(item.description) }}
+            </p>
+        </div>
+    </div>
+</div>
+}

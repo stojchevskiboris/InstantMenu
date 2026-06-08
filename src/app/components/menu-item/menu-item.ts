@@ -15,6 +15,10 @@ export class MenuItemComponent {
   item = input.required<Product>();
   private menuService = inject(MenuService);
 
+  openDetails() {
+    this.menuService.setSelectedProduct(this.item());
+  }
+
   quantity = computed(() => this.menuService.getQuantity(this.item().id));
 
   increment(event: Event) {
