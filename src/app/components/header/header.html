@@ -41,7 +41,14 @@
         <ul class="dropdown-menu dropdown-menu-end bg-theme-muted" aria-labelledby="dropdownMenuButton">
           @for (lang of languages | keyvalue; track lang.key) {
           <li>
-            <a class="dropdown-item text-theme-main" (click)="switchLanguage(lang.key)">{{ lang.value }}</a>
+            <a class="dropdown-item text-theme-main" (click)="switchLanguage(lang.key)">
+              @if (currentLang() === lang.key) {
+              <i class="bi bi-check2 me-1" aria-hidden="true"></i>
+              } @else {
+              <span class="ms-4"></span>
+              }
+              {{ lang.value }}
+            </a>
           </li>
           }
         </ul>
