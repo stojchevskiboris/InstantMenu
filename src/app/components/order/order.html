@@ -26,7 +26,7 @@
                             <div>
                                 <h6 class="mb-0 fw-bold small">{{ item.product.name | translate }}
                                 </h6>
-                                <span class="text-theme-muted extra-small">{{ item.product.price | currency }}</span>
+                                <span class="text-theme-muted extra-small">{{ item.product.price | currencyPrice }}</span>
                             </div>
                         </div>
                         <div class="d-flex align-items-center gap-2">
@@ -46,7 +46,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <span class="text-theme-muted small">
                         {{ 'subtotal' | translate : 'Subtotal' }}</span>
-                    <span class="fw-bold">{{ orderTotal() | currency }}</span>
+                    <span class="fw-bold">{{ orderTotal() | currencyPrice }}</span>
                 </div>
                 <button class="btn btn-outline-danger btn-sm w-100 rounded-3" (click)="clearOrder()">
                     {{ 'clear_order' | translate : 'Clear Order' }}
@@ -73,7 +73,7 @@
         </div>
         <div class="me-3 text-end">
             <span class="d-block extra-small opacity-75">{{ 'total' | translate :'Total' }}</span>
-            <span class="fw-bold" style="font-size: 1.1rem;">{{ orderTotal() | currency }}</span>
+            <span class="fw-bold" style="font-size: 1.1rem;">{{ orderTotal() | currencyPrice }}</span>
         </div>
     </div>
 </div>

@@ -14,7 +14,7 @@
             </p>
 
             <div class="mt-auto d-flex align-items-center justify-content-between">
-                <span class="fw-bold text-theme-main" style="font-size: 1.05rem;">{{ item().price | currency }}</span>
+                <span class="fw-bold text-theme-main" style="font-size: 1.05rem;">{{ item().price | currencyPrice }}</span>
                 <div class="quantity-controls ms-2">
                     @if (quantity() > 0) {
                     <div class="d-flex align-items-center bg-theme-card rounded-pill p-1">
