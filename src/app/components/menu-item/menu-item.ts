@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Product } from '../../models/menu.model';
 import { MenuService } from '../../services/menu.service';
 import { TranslatePipe } from '../../pipes/translate-pipe';
+import { CurrencyFormatPipe } from '../../pipes/currency-format.pipe';
 
 @Component({
   selector: 'app-menu-item',
   standalone: true,
-  imports: [CommonModule, TranslatePipe],
+  imports: [CommonModule, TranslatePipe, CurrencyFormatPipe],
   templateUrl: './menu-item.html',
   styleUrl: './menu-item.css',
 })
