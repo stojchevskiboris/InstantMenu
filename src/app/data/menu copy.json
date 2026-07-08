@@ -1,0 +1,281 @@
+{
+  "venue": {
+    "name": {
+      "mk": "The Velvet Lounge",
+      "en": "The Velvet Lounge"
+    },
+    "logoUrl": "/logo.png",
+    "wifiPassword": "velvet_lounge_2024",
+    "openHour": "10:00",
+    "closeHour": "01:00",
+    "address": {
+      "mk": "ул. Ноќен живот 123, Центар",
+      "en": "123 Nightlife St, City Center"
+    },
+    "phone": "+1 234 567 890"
+  },
+  "categories": [
+    {
+      "id": "drink",
+      "name": {
+        "mk": "Пијалоци",
+        "en": "Drinks"
+      },
+      "subCategories": [
+        {
+          "id": "cocktails",
+          "name": {
+            "mk": "Коктели",
+            "en": "Cocktails"
+          },
+          "items": [
+            {
+              "id": "d1",
+              "name": {
+                "mk": "Сигнатур Мартини",
+                "en": "Signature Martini"
+              },
+              "description": {
+                "mk": "Џин, сув вермут, кора од лимон",
+                "en": "Gin, Dry Vermouth, Lemon Twist"
+              },
+              "price": 12.0,
+              "photoUrl": "/martini.png",
+              "tags": [
+                "Chef's Special"
+              ]
+            },
+            {
+              "id": "d2",
+              "name": {
+                "mk": "Олд фешнд",
+                "en": "Old Fashioned"
+              },
+              "description": {
+                "mk": "Бурбон, шеќер, битер, кора од портокал",
+                "en": "Bourbon, Sugar, Bitters, Orange Peel"
+              },
+              "price": 14.0,
+              "photoUrl": "/old-fashioned.jpg"
+            }
+          ]
+        },
+        {
+          "id": "beer",
+          "name": {
+            "mk": "Пиво",
+            "en": "Beer"
+          },
+          "items": [
+            {
+              "id": "d3",
+              "name": {
+                "mk": "Занаетчиско ИПА",
+                "en": "Craft IPA"
+              },
+              "description": {
+                "mk": "Избор од локална пиварница",
+                "en": "Local brewery selection"
+              },
+              "price": 7.0,
+              "photoUrl": "/ipa.jpg"
+            }
+          ]
+        },{
+          "id": "cocktails",
+          "name": {
+            "mk": "Коктели",
+            "en": "Cocktails"
+          },
+          "items": [
+            {
+              "id": "d1",
+              "name": {
+                "mk": "Сигнатур Мартини",
+                "en": "Signature Martini"
+              },
+              "description": {
+                "mk": "Џин, сув вермут, кора од лимон",
+                "en": "Gin, Dry Vermouth, Lemon Twist"
+              },
+              "price": 12.0,
+              "photoUrl": "/martini.png",
+              "tags": [
+                "Chef's Special"
+              ]
+            },
+            {
+              "id": "d2",
+              "name": {
+                "mk": "Олд фешнд",
+                "en": "Old Fashioned"
+              },
+              "description": {
+                "mk": "Бурбон, шеќер, битер, кора од портокал",
+                "en": "Bourbon, Sugar, Bitters, Orange Peel"
+              },
+              "price": 14.0,
+              "photoUrl": "/old-fashioned.jpg"
+            }
+          ]
+        },
+        {
+          "id": "wine",
+          "name": {
+            "mk": "Вино",
+            "en": "Wine"
+          },
+          "items": [
+            {
+              "id": "d4",
+              "name": {
+                "mk": "Каберне Совињон",
+                "en": "Cabernet Sauvignon"
+              },
+              "description": {
+                "mk": "Полно црвено вино",
+                "en": "Full-bodied red wine"
+              },
+              "price": 45.0,
+              "photoUrl": "/wine.jpg"
+            }
+          ]
+        },{
+          "id": "cocktails",
+          "name": {
+            "mk": "Коктели",
+            "en": "Cocktails"
+          },
+          "items": [
+            {
+              "id": "d1",
+              "name": {
+                "mk": "Сигнатур Мартини",
+                "en": "Signature Martini"
+              },
+              "description": {
+                "mk": "Џин, сув вермут, кора од лимон",
+                "en": "Gin, Dry Vermouth, Lemon Twist"
+              },
+              "price": 12.0,
+              "photoUrl": "/martini.png",
+              "tags": [
+                "Chef's Special"
+              ]
+            },
+            {
+              "id": "d2",
+              "name": {
+                "mk": "Олд фешнд",
+                "en": "Old Fashioned"
+              },
+              "description": {
+                "mk": "Бурбон, шеќер, битер, кора од портокал",
+                "en": "Bourbon, Sugar, Bitters, Orange Peel"
+              },
+              "price": 14.0,
+              "photoUrl": "/old-fashioned.jpg"
+            }
+          ]
+        },
+        {
+          "id": "non-alcoholic",
+          "name": {
+            "mk": "Безалкохолни",
+            "en": "Non-alcoholic"
+          },
+          "items": [
+            {
+              "id": "d5",
+              "name": {
+                "mk": "Вирџин Мохито",
+                "en": "Virgin Mojito"
+              },
+              "description": {
+                "mk": "Свежо нане, лимета, сода",
+                "en": "Fresh mint, lime, soda"
+              },
+              "price": 6.0,
+              "photoUrl": "/mojito.jpg",
+              "tags": [
+                "Refreshing"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "food",
+      "name": {
+        "mk": "Храна",
+        "en": "Food"
+      },
+      "subCategories": [
+        {
+          "id": "appetizers",
+          "name": {
+            "mk": "Предјадења",
+            "en": "Appetizers"
+          },
+          "items": [
+            {
+              "id": "f1",
+              "name": {
+                "mk": "Лути крилца",
+                "en": "Spicy Wings"
+              },
+              "description": {
+                "mk": "Буфало стил со сос од сино сирење",
+                "en": "Buffalo style with blue cheese dip"
+              },
+              "price": 10.0,
+              "photoUrl": "/wings.jpg",
+              "tags": [
+                "Spicy"
+              ]
+            },
+            {
+              "id": "f2",
+              "name": {
+                "mk": "Помфрит со тартуфи",
+                "en": "Truffle Fries"
+              },
+              "description": {
+                "mk": "Пармезан, масло од тартуфи, билки",
+                "en": "Parmesan, truffle oil, herbs"
+              },
+              "price": 8.0,
+              "photoUrl": "/fries.jpg",
+              "tags": [
+                "Vegan"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "desserts",
+          "name": {
+            "mk": "Десерти",
+            "en": "Desserts"
+          },
+          "items": [
+            {
+              "id": "f3",
+              "name": {
+                "mk": "Чоколаден фондант",
+                "en": "Chocolate Fondant"
+              },
+              "description": {
+                "mk": "Топло срце, сладолед од ванила",
+                "en": "Warm heart, vanilla ice cream"
+              },
+              "price": 9.0,
+              "photoUrl": "/fondant.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

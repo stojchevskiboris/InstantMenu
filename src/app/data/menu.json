@@ -23,109 +23,1251 @@
       },
       "subCategories": [
         {
-          "id": "cocktails",
+          "id": "coffee",
           "name": {
-            "mk": "Коктели",
-            "en": "Cocktails"
+            "mk": "Кафе",
+            "en": "Coffee"
           },
           "items": [
             {
               "id": "d1",
               "name": {
-                "mk": "Сигнатур Мартини",
-                "en": "Signature Martini"
+                "mk": "Дупло еспресо",
+                "en": "Double Espresso"
               },
               "description": {
-                "mk": "Џин, сув вермут, кора од лимон",
-                "en": "Gin, Dry Vermouth, Lemon Twist"
+                "mk": "Двојна доза интензивно еспресо со богата крема.",
+                "en": "A double shot of intense espresso with a rich, thick crema."
               },
-              "price": 12.0,
-              "photoUrl": "/martini.png",
-              "tags": [
-                "Chef's Special"
-              ]
+              "price": 200.0,
+              "photoUrl": "/double-espresso.jpg"
             },
             {
               "id": "d2",
               "name": {
-                "mk": "Олд фешнд",
-                "en": "Old Fashioned"
+                "mk": "Американо",
+                "en": "Americano"
               },
               "description": {
-                "mk": "Бурбон, шеќер, битер, кора од портокал",
-                "en": "Bourbon, Sugar, Bitters, Orange Peel"
+                "mk": "Класично еспресо продолжено со топла вода за балансиран вкус.",
+                "en": "Classic espresso shot extended with hot water for a balanced profile."
               },
-              "price": 14.0,
-              "photoUrl": "/old-fashioned.jpg"
-            }
-          ]
-        },
-        {
-          "id": "beer",
-          "name": {
-            "mk": "Пиво",
-            "en": "Beer"
-          },
-          "items": [
+              "price": 120.0,
+              "photoUrl": "/americano.jpg"
+            },
             {
               "id": "d3",
               "name": {
-                "mk": "Занаетчиско ИПА",
-                "en": "Craft IPA"
+                "mk": "Макијато",
+                "en": "Macchiato"
               },
               "description": {
-                "mk": "Избор од локална пиварница",
-                "en": "Local brewery selection"
+                "mk": "Еспресо со мала количина на топла млечна пена.",
+                "en": "Espresso stained with a delicate dollop of warm milk foam."
               },
-              "price": 7.0,
-              "photoUrl": "/ipa.jpg"
-            }
-          ]
-        },
-        {
-          "id": "wine",
-          "name": {
-            "mk": "Вино",
-            "en": "Wine"
-          },
-          "items": [
+              "price": 130.0,
+              "photoUrl": "/macchiato.jpg"
+            },
             {
               "id": "d4",
               "name": {
-                "mk": "Каберне Совињон",
-                "en": "Cabernet Sauvignon"
+                "mk": "Капучино",
+                "en": "Cappuccino"
               },
               "description": {
-                "mk": "Полно црвено вино",
-                "en": "Full-bodied red wine"
+                "mk": "Еспресо со еднакви делови на топло млеко и млечна пена.",
+                "en": "Espresso mixed with equal parts of steamed milk and milk foam."
               },
-              "price": 45.0,
-              "photoUrl": "/wine.jpg"
+              "price": 130.0,
+              "photoUrl": "/cappuccino.jpg"
+            },
+            {
+              "id": "d5",
+              "name": {
+                "mk": "Фредо еспресо",
+                "en": "Freddo Espresso"
+              },
+              "description": {
+                "mk": "Освежително ладно еспресо изматено со мраз.",
+                "en": "Refreshing iced espresso blended until smooth and chilled."
+              },
+              "price": 220.0,
+              "photoUrl": "/freddo-espresso.jpg"
+            },
+            {
+              "id": "d6",
+              "name": {
+                "mk": "Фредо капучино",
+                "en": "Freddo Cappuccino"
+              },
+              "description": {
+                "mk": "Ладно еспресо со мраз, прелиено со ладна млечна пена.",
+                "en": "Chilled espresso over ice, layered with creamy cold milk foam."
+              },
+              "price": 160.0,
+              "photoUrl": "/freddo-cappuccino.jpg"
+            },
+            {
+              "id": "d7",
+              "name": {
+                "mk": "Лате",
+                "en": "Latte"
+              },
+              "description": {
+                "mk": "Еспресо комбинирано со многу топло млеко и нежен слој пена.",
+                "en": "Espresso paired with plenty of steamed milk and a light foam layer."
+              },
+              "price": 170.0,
+              "photoUrl": "/latte.jpg"
+            },
+            {
+              "id": "d8",
+              "name": {
+                "mk": "Панаме лате",
+                "en": "Paname Latte"
+              },
+              "description": {
+                "mk": "Наше специјално лате со уникатна нота на сладост.",
+                "en": "Our custom artisan latte infused with a unique hint of sweetness."
+              },
+              "price": 190.0,
+              "photoUrl": "/paname-latte.jpg"
+            },
+            {
+              "id": "d9",
+              "name": {
+                "mk": "Тирамису еспресо",
+                "en": "Tiramisu Espresso"
+              },
+              "description": {
+                "mk": "Еспресо со десертна нота на какао и крем од тирамису.",
+                "en": "Dessert-inspired espresso infused with cocoa and tiramisu flavors."
+              },
+              "price": 190.0,
+              "photoUrl": "/tiramisu-espresso.jpg"
+            },
+            {
+              "id": "d10",
+              "name": {
+                "mk": "Афогато",
+                "en": "Affogato"
+              },
+              "description": {
+                "mk": "Традиционален италијански десерт: еспресо прелиено врз топка сладолед.",
+                "en": "Traditional Italian treat: a shot of hot espresso over vanilla ice cream."
+              },
+              "price": 180.0,
+              "photoUrl": "/affogato.jpg"
+            },
+            {
+              "id": "d11",
+              "name": {
+                "mk": "Ирско Кафе",
+                "en": "Irish Coffee"
+              },
+              "description": {
+                "mk": "Топло кафе со ирско виски, шеќер и дебел слој шлаг.",
+                "en": "Hot coffee combined with Irish whiskey, sugar, and a thick cream top."
+              },
+              "price": 380.0,
+              "photoUrl": "/irish-coffee.jpg"
+            },
+            {
+              "id": "d12",
+              "name": {
+                "mk": "Нескафе",
+                "en": "Nescafe"
+              },
+              "description": {
+                "mk": "Класично инстант кафе изматено со млеко и шеќер по желба.",
+                "en": "Classic instant coffee whipped smooth with optional milk and sugar."
+              },
+              "price": 130.0,
+              "photoUrl": "/nescafe.jpg"
+            },
+            {
+              "id": "d13",
+              "name": {
+                "mk": "Додаток вкус",
+                "en": "Flavor Syrup Shot"
+              },
+              "description": {
+                "mk": "Додадете сируп со вкус по избор за да го збогатите вашето кафе.",
+                "en": "Enhance your favorite beverage with a premium flavor syrup shot."
+              },
+              "price": 40.0,
+              "photoUrl": "/syrup.jpg"
+            },
+            {
+              "id": "d14",
+              "name": {
+                "mk": "Espresso to go",
+                "en": "Espresso to go"
+              },
+              "description": {
+                "mk": "Брзо и квалитетно еспресо во практична амбалажа за носење.",
+                "en": "Quick, high-quality espresso packaged for your busy morning commute."
+              },
+              "price": 100.0,
+              "photoUrl": "/espresso-to-go.jpg"
+            },
+            {
+              "id": "d15",
+              "name": {
+                "mk": "Еспресо Арабика",
+                "en": "Espresso Arabica"
+              },
+              "description": {
+                "mk": "Премиум еспресо направено од 100% селектирани зрна Арабика.",
+                "en": "Premium single-origin espresso from 100% select Arabica beans."
+              },
+              "price": 110.0,
+              "photoUrl": "/arabica.jpg"
+            },
+            {
+              "id": "d16",
+              "name": {
+                "mk": "Cappuccino to go",
+                "en": "Cappuccino to go"
+              },
+              "description": {
+                "mk": "Кремасто капучино подготвено за носење.",
+                "en": "Creamy, frothy cappuccino served in a convenient travel cup."
+              },
+              "price": 120.0,
+              "photoUrl": "/cappuccino-to-go.jpg"
+            },
+            {
+              "id": "d17",
+              "name": {
+                "mk": "Мало макијато",
+                "en": "Small Macchiato"
+              },
+              "description": {
+                "mk": "Кратко еспресо со само капка топла млечна пена.",
+                "en": "Short espresso shot hit with just a touch of warm frothy milk."
+              },
+              "price": 120.0,
+              "photoUrl": "/small-macchiato.jpg"
             }
           ]
         },
         {
           "id": "non-alcoholic",
           "name": {
-            "mk": "Безалкохолни",
-            "en": "Non-alcoholic"
+            "mk": "Безалкохолни пијалоци",
+            "en": "Non-alcoholic Drinks"
           },
           "items": [
             {
-              "id": "d5",
+              "id": "d18",
               "name": {
-                "mk": "Вирџин Мохито",
+                "mk": "Кока Кола",
+                "en": "Coca Cola"
+              },
+              "description": {
+                "mk": "Најпознатиот освежителен газиран пијалок служен со мраз и лимон.",
+                "en": "The ultimate carbonated soft drink served crisp and ice-cold."
+              },
+              "price": 140.0,
+              "photoUrl": "/cola.jpg"
+            },
+            {
+              "id": "d19",
+              "name": {
+                "mk": "Фанта",
+                "en": "Fanta"
+              },
+              "description": {
+                "mk": "Освежителен газиран пијалок со полн и интензивен вкус на портокал.",
+                "en": "Bright and fizzy carbonated beverage with a lively orange flavor."
+              },
+              "price": 140.0,
+              "photoUrl": "/fanta.jpg"
+            },
+            {
+              "id": "d20",
+              "name": {
+                "mk": "Спрајт",
+                "en": "Sprite"
+              },
+              "description": {
+                "mk": "Бистар газиран пијалок со чист вкус на лимон и лимета.",
+                "en": "Crisp and clear carbonated soft drink with lemon-lime notes."
+              },
+              "price": 140.0,
+              "photoUrl": "/sprite.jpg"
+            },
+            {
+              "id": "d21",
+              "name": {
+                "mk": "Швепс",
+                "en": "Schweppes"
+              },
+              "description": {
+                "mk": "Горчливо-сладок газиран тоник, совршен за самостојно освежување.",
+                "en": "Classic bitter-sweet carbonated tonic water, ideal for refreshing refreshment."
+              },
+              "price": 140.0,
+              "photoUrl": "/schweppes.jpg"
+            },
+            {
+              "id": "d22",
+              "name": {
+                "mk": "Газирана вода",
+                "en": "Sparkling Water"
+              },
+              "description": {
+                "mk": "Природно газирана минерална вода за чиста свежина.",
+                "en": "Naturally carbonated mineral water for a crisp, bubbly palate cleanser."
+              },
+              "price": 90.0,
+              "photoUrl": "/sparkling.jpg"
+            },
+            {
+              "id": "d23",
+              "name": {
+                "mk": "Негазирана вода",
+                "en": "Still Water"
+              },
+              "description": {
+                "mk": "Чиста и природна изворска вода за секојдневна хидратација.",
+                "en": "Pure, premium quality still spring water served chilled."
+              },
+              "price": 90.0,
+              "photoUrl": "/still.jpg"
+            },
+            {
+              "id": "d24",
+              "name": {
+                "mk": "Негазиран сок (праска, јаболко, портокал, боровница)",
+                "en": "Fruit Juice (Peach, Apple, Orange, Blueberry)"
+              },
+              "description": {
+                "mk": "Природен негазиран овошен сок во повеќе омилени вкусови.",
+                "en": "Premium non-carbonated fruit juice available in your choice of flavor."
+              },
+              "price": 120.0,
+              "photoUrl": "/juice.jpg"
+            },
+            {
+              "id": "d25",
+              "name": {
+                "mk": "Чај ДелМар Премиум",
+                "en": "DelMar Premium Tea"
+              },
+              "description": {
+                "mk": "Селекција од најфините билни, овошни и црни чаеви.",
+                "en": "A curated selection of aromatic premium herbal, fruit, and black teas."
+              },
+              "price": 180.0,
+              "photoUrl": "/tea.jpg"
+            },
+            {
+              "id": "d26",
+              "name": {
+                "mk": "Топло чоколадо",
+                "en": "Hot Chocolate"
+              },
+              "description": {
+                "mk": "Густ, богат и кремаст топол чоколаден напиток.",
+                "en": "Thick, luxurious, and deeply satisfying rich hot chocolate blend."
+              },
+              "price": 180.0,
+              "photoUrl": "/hot-chocolate.jpg"
+            },
+            {
+              "id": "d27",
+              "name": {
+                "mk": "Какао",
+                "en": "Cocoa"
+              },
+              "description": {
+                "mk": "Традиционален топол напиток од какао со млеко и малку шеќер.",
+                "en": "Comforting warm milk cocoa beverage, lightly sweetened."
+              },
+              "price": 150.0,
+              "photoUrl": "/cocoa.jpg"
+            },
+            {
+              "id": "d28",
+              "name": {
+                "mk": "Салеп",
+                "en": "Salep"
+              },
+              "description": {
+                "mk": "Традиционален густ зимски пијалок со вкус на цимет.",
+                "en": "Traditional sweet, thick Middle Eastern winter drink dusted with cinnamon."
+              },
+              "price": 150.0,
+              "photoUrl": "/salep.jpg"
+            },
+            {
+              "id": "d29",
+              "name": {
+                "mk": "Цеден портокал",
+                "en": "Fresh Orange Juice"
+              },
+              "description": {
+                "mk": "100% природен сок од свежо исцедени сочни портокали.",
+                "en": "Pure 100% liquid sunshine squeezed from ripe, juicy oranges."
+              },
+              "price": 180.0,
+              "photoUrl": "/fresh-orange.jpg"
+            },
+            {
+              "id": "d30",
+              "name": {
+                "mk": "Цеден лимон",
+                "en": "Fresh Lemon Juice"
+              },
+              "description": {
+                "mk": "Чист свежо цеден сок од лимон, полн со витамин Ц.",
+                "en": "Freshly squeezed lemon juice packed with vitamins, perfect for detox."
+              },
+              "price": 150.0,
+              "photoUrl": "/fresh-lemon.jpg"
+            },
+            {
+              "id": "d31",
+              "name": {
+                "mk": "Цеден цитрон",
+                "en": "Fresh Grapefruit Juice"
+              },
+              "description": {
+                "mk": "Свеж, малку горчлив и исклучително здрав цеден цитрон.",
+                "en": "Tangy and revitalizing juice squeezed fresh from whole grapefruits."
+              },
+              "price": 200.0,
+              "photoUrl": "/fresh-grapefruit.jpg"
+            },
+            {
+              "id": "d32",
+              "name": {
+                "mk": "Цеден микс по желба",
+                "en": "Custom Fresh Juice Mix"
+              },
+              "description": {
+                "mk": "Комбинација од свежо цедени овошја по ваш сопствен избор.",
+                "en": "A vibrant blend of seasonal fresh fruits tailored exactly to your liking."
+              },
+              "price": 200.0,
+              "photoUrl": "/juice-mix.jpg"
+            },
+            {
+              "id": "d33",
+              "name": {
+                "mk": "Смути",
+                "en": "Smoothie"
+              },
+              "description": {
+                "mk": "Густ и хранлив блендиран пијалок од селектирано овошје.",
+                "en": "Nutritious and thick blended drink made with wholesome fruit ingredients."
+              },
+              "price": 240.0,
+              "photoUrl": "/smoothie.jpg"
+            },
+            {
+              "id": "d34",
+              "name": {
+                "mk": "Лимонада со вкус",
+                "en": "Flavored Lemonade"
+              },
+              "description": {
+                "mk": "Домашна свежа лимонада збогатена со овошен сируп по избор.",
+                "en": "Homemade zesty lemonade accented with your choice of premium fruit syrup."
+              },
+              "price": 180.0,
+              "photoUrl": "/flavoured-lemonade.jpg"
+            },
+            {
+              "id": "d35",
+              "name": {
+                "mk": "Безалкохолно мохито",
                 "en": "Virgin Mojito"
               },
               "description": {
-                "mk": "Свежо нане, лимета, сода",
-                "en": "Fresh mint, lime, soda"
+                "mk": "Класично мохито без алкохол со свежо нане, лимета и сода.",
+                "en": "Crisp non-alcoholic classic containing crushed mint, lime, and soda."
               },
-              "price": 6.0,
-              "photoUrl": "/mojito.jpg",
-              "tags": [
-                "Refreshing"
-              ]
+              "price": 270.0,
+              "photoUrl": "/virgin-mojito.jpg"
+            },
+            {
+              "id": "d36",
+              "name": {
+                "mk": "Bacardi soda",
+                "en": "Bacardi Soda (Non-Alc)"
+              },
+              "description": {
+                "mk": "Освежителен безалкохолен микс инспириран од познатиот рум коктел.",
+                "en": "A crisp, refreshing mocktail twist inspired by classic soda pairings."
+              },
+              "price": 280.0,
+              "photoUrl": "/bacardi-soda-mocktail.jpg"
+            },
+            {
+              "id": "d37",
+              "name": {
+                "mk": "Pink grape soda",
+                "en": "Pink Grape Soda"
+              },
+              "description": {
+                "mk": "Освежителен газиран пијалок со вкус на розов грејпфрут.",
+                "en": "Fizzy and refreshing carbonated beverage bursting with pink grapefruit notes."
+              },
+              "price": 200.0,
+              "photoUrl": "/pink-grape-soda.jpg"
+            }
+          ]
+        },
+        {
+          "id": "alcoholic",
+          "name": {
+            "mk": "Алкохолни пијалоци",
+            "en": "Alcoholic Drinks"
+          },
+          "items": [
+            {
+              "id": "d38",
+              "name": {
+                "mk": "Амстел",
+                "en": "Amstel"
+              },
+              "description": {
+                "mk": "Класично премиум лагер пиво со мазен и балансиран финиш.",
+                "en": "Premium blonde lager with a mild, smooth, and easily refreshing finish."
+              },
+              "price": 200.0,
+              "photoUrl": "/amstel.jpg"
+            },
+            {
+              "id": "d39",
+              "name": {
+                "mk": "Хајнекен",
+                "en": "Heineken"
+              },
+              "description": {
+                "mk": "Светски познато премиум пиво со препознатлив чист вкус.",
+                "en": "Iconic world-class Dutch pale lager known for its crisp signature taste."
+              },
+              "price": 200.0,
+              "photoUrl": "/heineken.jpg"
+            },
+            {
+              "id": "d40",
+              "name": {
+                "mk": "Скопско",
+                "en": "Skopsko"
+              },
+              "description": {
+                "mk": "Најпознатото македонско пиво, синоним за врвен квалитет и традиција.",
+                "en": "The most beloved local Macedonian lager, celebrating time-tested quality."
+              },
+              "price": 180.0,
+              "photoUrl": "/skopsko.jpg"
+            },
+            {
+              "id": "d41",
+              "name": {
+                "mk": "Baileys",
+                "en": "Baileys"
+              },
+              "description": {
+                "mk": "Кремаст ирски ликер со ноти на какао и нежна ванила.",
+                "en": "Velvety Irish cream liqueur balancing notes of fine cocoa and rich vanilla."
+              },
+              "price": 210.0,
+              "photoUrl": "/baileys.jpg"
+            },
+            {
+              "id": "d42",
+              "name": {
+                "mk": "Balantines",
+                "en": "Ballantine's"
+              },
+              "description": {
+                "mk": "Префинето шкотско виски со комплексен и богат вкус.",
+                "en": "Classic blended Scotch whisky delivering a sophisticated, smoky edge."
+              },
+              "price": 250.0,
+              "photoUrl": "/ballantines.jpg"
+            },
+            {
+              "id": "d43",
+              "name": {
+                "mk": "Brokers gin",
+                "en": "Broker's Gin"
+              },
+              "description": {
+                "mk": "Традиционален лондонски сув џин со богата нота на смрека.",
+                "en": "Premium London dry gin featuring distinct herbal and juniper botanicals."
+              },
+              "price": 220.0,
+              "photoUrl": "/brokers-gin.jpg"
+            },
+            {
+              "id": "d44",
+              "name": {
+                "mk": "Brokers tonic",
+                "en": "Broker's Gin & Tonic"
+              },
+              "description": {
+                "mk": "Класичен микс од Брокерс џин и сув тоник со парче лимета.",
+                "en": "The definitive highball featuring Broker's Gin, premium tonic, and fresh lime."
+              },
+              "price": 260.0,
+              "photoUrl": "/brokers-tonic.jpg"
+            },
+            {
+              "id": "d45",
+              "name": {
+                "mk": "Glen Moray",
+                "en": "Glen Moray"
+              },
+              "description": {
+                "mk": "Едносладно шкотско виски со овошни тонови и фин чаден завршеток.",
+                "en": "Single malt Scotch whisky characterized by butterscotch notes and light smoke."
+              },
+              "price": 320.0,
+              "photoUrl": "/glen-moray.jpg"
+            },
+            {
+              "id": "d46",
+              "name": {
+                "mk": "J&B",
+                "en": "J&B"
+              },
+              "description": {
+                "mk": "Популарно мешано шкотско виски, одлично за секоја пригода.",
+                "en": "Smooth and approachable blended Scotch whisky, perfect for mixing."
+              },
+              "price": 260.0,
+              "photoUrl": "/jb.jpg"
+            },
+            {
+              "id": "d47",
+              "name": {
+                "mk": "Jack Daniels",
+                "en": "Jack Daniel's"
+              },
+              "description": {
+                "mk": "Легендарно Тенеси виски филтрирано низ јаглен од јавор.",
+                "en": "Legendary charcoal-mellowed Tennessee whiskey with rich caramel tones."
+              },
+              "price": 300.0,
+              "photoUrl": "/jack-daniels.jpg"
+            },
+            {
+              "id": "d48",
+              "name": {
+                "mk": "Jameson",
+                "en": "Jameson"
+              },
+              "description": {
+                "mk": "Трикратно дестилирано ирско виски со исклучително мазен вкус.",
+                "en": "Triple-distilled Irish whiskey renowned for its outstandingly smooth texture."
+              },
+              "price": 280.0,
+              "photoUrl": "/jameson.jpg"
+            },
+            {
+              "id": "d49",
+              "name": {
+                "mk": "Stock",
+                "en": "Stock 84 Brandy"
+              },
+              "description": {
+                "mk": "Класично бренди со богата историја и хармоничен вкус.",
+                "en": "Traditional Mediterranean brandy aged in oak barrels for balanced warmth."
+              },
+              "price": 190.0,
+              "photoUrl": "/stock.jpg"
+            },
+            {
+              "id": "d50",
+              "name": {
+                "mk": "Jeggermeister",
+                "en": "Jägermeister"
+              },
+              "description": {
+                "mk": "Познат германски билен ликер направен од 56 различни билки.",
+                "en": "Celebrated German herbal liqueur crafted from an aromatic blend of 56 herbs."
+              },
+              "price": 260.0,
+              "photoUrl": "/jagermeister.jpg"
+            },
+            {
+              "id": "d51",
+              "name": {
+                "mk": "Johnnie Walker Red",
+                "en": "Johnnie Walker Red Label"
+              },
+              "description": {
+                "mk": "Динамично шкотско виски со зачинет и впечатлив карактер.",
+                "en": "Vibrant blended Scotch whisky delivering bold, smoky, and spicy profiles."
+              },
+              "price": 260.0,
+              "photoUrl": "/johnnie-walker.jpg"
+            },
+            {
+              "id": "d52",
+              "name": {
+                "mk": "Whiskey Sour",
+                "en": "Whiskey Sour"
+              },
+              "description": {
+                "mk": "Совршен баланс на виски, свеж сок од лимон и шеќерен сируп.",
+                "en": "Timeless cocktail blending fine whiskey, zesty lemon juice, and simple syrup."
+              },
+              "price": 340.0,
+              "photoUrl": "/whiskey-sour.jpg"
+            },
+            {
+              "id": "d53",
+              "name": {
+                "mk": "Gin Hendrick's",
+                "en": "Hendrick's Gin"
+              },
+              "description": {
+                "mk": "Премиум џин дестилиран со ноти на роза и краставица.",
+                "en": "Super-premium gin uniquely infused with Bulgarian rose and cucumber extracts."
+              },
+              "price": 300.0,
+              "photoUrl": "/hendricks.jpg"
+            },
+            {
+              "id": "d54",
+              "name": {
+                "mk": "Amaretto Sour",
+                "en": "Amaretto Sour"
+              },
+              "description": {
+                "mk": "Сладок и кисел коктел со ликер од бадем и сок од цитрус.",
+                "en": "Sweet and tart cocktail highlighting rich almond liqueur and fresh citrus."
+              },
+              "price": 290.0,
+              "photoUrl": "/amaretto-sour.jpg"
+            },
+            {
+              "id": "d55",
+              "name": {
+                "mk": "Monkey Shoulder",
+                "en": "Monkey Shoulder"
+              },
+              "description": {
+                "mk": "Модерен малц виски со мазни ноти на ванила и зачини.",
+                "en": "Smooth, malty Scotch whisky blended to perfection with hints of vanilla."
+              },
+              "price": 350.0,
+              "photoUrl": "/monkey-shoulder.jpg"
+            },
+            {
+              "id": "d56",
+              "name": {
+                "mk": "Aperol Sour",
+                "en": "Aperol Sour"
+              },
+              "description": {
+                "mk": "Освежителна варијација на Аперол со додаток на кисели цитрусни ноти.",
+                "en": "A refreshing citrus twist on the classic Italian bittersweet aperitif."
+              },
+              "price": 300.0,
+              "photoUrl": "/aperol-sour.jpg"
+            },
+            {
+              "id": "d57",
+              "name": {
+                "mk": "Aperol Spritz",
+                "en": "Aperol Spritz"
+              },
+              "description": {
+                "mk": "Познатиот италијански коктел со Аперол, просеко и газирана вода.",
+                "en": "The quintessential Italian aperitivo pairing Aperol, prosecco, and soda water."
+              },
+              "price": 330.0,
+              "photoUrl": "/aperol-spritz.jpg"
+            },
+            {
+              "id": "d58",
+              "name": {
+                "mk": "Вино наливно Тиквеш",
+                "en": "Tikveš House Wine"
+              },
+              "description": {
+                "mk": "Квалитетно домашно наливно вино од најпознатата македонска винарија.",
+                "en": "Premium draft house wine sourced directly from the historic Tikveš winery."
+              },
+              "price": 220.0,
+              "photoUrl": "/tikves-wine.jpg"
+            },
+            {
+              "id": "d59",
+              "name": {
+                "mk": "Вино наливно Попова Кула",
+                "en": "Popova Kula House Wine"
+              },
+              "description": {
+                "mk": "Локално селектирано наливно вино со богата арома и хармоничен вкус.",
+                "en": "Finely balanced house wine drafted from the renowned Popova Kula estate."
+              },
+              "price": 250.0,
+              "photoUrl": "/popova-kula.jpg"
+            },
+            {
+              "id": "d60",
+              "name": {
+                "mk": "Vodka Sunrise",
+                "en": "Vodka Sunrise"
+              },
+              "description": {
+                "mk": "Шарен микс од вотка, сок од портокал и сируп од гренадин.",
+                "en": "Vibrant layers of vodka, crisp orange juice, and sweet grenadine syrup."
+              },
+              "price": 300.0,
+              "photoUrl": "/vodka-sunrise.jpg"
+            },
+            {
+              "id": "d61",
+              "name": {
+                "mk": "Vodka Sour",
+                "en": "Vodka Sour"
+              },
+              "description": {
+                "mk": "Класичен освежителен коктел со квалитетна вотка и кисел цитрус.",
+                "en": "A simple and clean cocktail matching clean vodka with tangy sour citrus."
+              },
+              "price": 290.0,
+              "photoUrl": "/vodka-sour.jpg"
+            },
+            {
+              "id": "d62",
+              "name": {
+                "mk": "Vodka Stolichnaya",
+                "en": "Stolichnaya Vodka"
+              },
+              "description": {
+                "mk": "Класична премиум руска вотка со мазна и чиста текстура.",
+                "en": "Premium globally acclaimed vodka presenting an ultra-smooth finish."
+              },
+              "price": 200.0,
+              "photoUrl": "/stoli.jpg"
+            },
+            {
+              "id": "d63",
+              "name": {
+                "mk": "Espresso Martini",
+                "en": "Espresso Martini"
+              },
+              "description": {
+                "mk": "Софистициран микс од свежо еспресо, вотка и ликер од кафе.",
+                "en": "Sophisticated pick-me-up featuring fresh espresso, vodka, and coffee liqueur."
+              },
+              "price": 300.0,
+              "photoUrl": "/espresso-martini.jpg"
+            },
+            {
+              "id": "d64",
+              "name": {
+                "mk": "Limoncello Spritz",
+                "en": "Limoncello Spritz"
+              },
+              "description": {
+                "mk": "Летен медитерански коктел со лимончело, просеко и сода.",
+                "en": "Sun-kissed Italian cocktail blending tart limoncello, prosecco, and soda."
+              },
+              "price": 330.0,
+              "photoUrl": "/limoncello-spritz.jpg"
+            },
+            {
+              "id": "d65",
+              "name": {
+                "mk": "Long Island",
+                "en": "Long Island Iced Tea"
+              },
+              "description": {
+                "mk": "Силен коктел со пет видови бел алкохол, трипл сек и кола.",
+                "en": "Potent highball mixing five white spirits, triple sec, citrus, and cola."
+              },
+              "price": 320.0,
+              "photoUrl": "/long-island.jpg"
+            },
+            {
+              "id": "d66",
+              "name": {
+                "mk": "Margarita",
+                "en": "Margarita"
+              },
+              "description": {
+                "mk": "Класичен мексикански коктел со текила, трипл сек и свеж сок од лимета.",
+                "en": "Classic Mexican cocktail combining tequila, triple sec, and lime juice."
+              },
+              "price": 300.0,
+              "photoUrl": "/margarita.jpg"
+            },
+            {
+              "id": "d67",
+              "name": {
+                "mk": "Martini",
+                "en": "Classic Martini"
+              },
+              "description": {
+                "mk": "Елегантен и безвременски микс од џин и сув вермут.",
+                "en": "Elegant cocktail composed of premium dry gin and French vermouth."
+              },
+              "price": 220.0,
+              "photoUrl": "/martini.jpg"
+            },
+            {
+              "id": "d68",
+              "name": {
+                "mk": "Negroni",
+                "en": "Negroni"
+              },
+              "description": {
+                "mk": "Италијански класик со еднакви делови на џин, кампари и сладок вермут.",
+                "en": "Stirred Italian staple made with equal measures of gin, campari, and vermouth."
+              },
+              "price": 330.0,
+              "photoUrl": "/negroni.jpg"
+            },
+            {
+              "id": "d69",
+              "name": {
+                "mk": "Pelinkovac",
+                "en": "Pelinkovac"
+              },
+              "description": {
+                "mk": "Традиционален горчлив ликер со карактеристичен вкус на пелин.",
+                "en": "Traditional Balkan bitter herbal liqueur centered on wormwood botanicals."
+              },
+              "price": 200.0,
+              "photoUrl": "/pelinkovac.jpg"
+            },
+            {
+              "id": "d70",
+              "name": {
+                "mk": "Pina Colada",
+                "en": "Piña Colada"
+              },
+              "description": {
+                "mk": "Тропски микс од бел рум, крем од кокос и сок од ананас.",
+                "en": "Creamy tropical blend featuring fine white rum, coconut, and pineapple juice."
+              },
+              "price": 320.0,
+              "photoUrl": "/pina-colada.jpg"
+            },
+            {
+              "id": "d71",
+              "name": {
+                "mk": "Henkell Piccolo",
+                "en": "Henkell Piccolo"
+              },
+              "description": {
+                "mk": "Мало пакување на премиум германско пенливо вино.",
+                "en": "A single-serve miniature bottle of elegant dry German sparkling wine."
+              },
+              "price": 370.0,
+              "photoUrl": "/henkell.jpg"
+            },
+            {
+              "id": "d72",
+              "name": {
+                "mk": "Tequila",
+                "en": "Tequila Shot"
+              },
+              "description": {
+                "mk": "Чист и квалитетен дестилат од сино агаве служен со лимон.",
+                "en": "A neat shot of fine blue agave tequila served traditionally with salt and lemon."
+              },
+              "price": 150.0,
+              "photoUrl": "/tequila.jpg"
+            },
+            {
+              "id": "d73",
+              "name": {
+                "mk": "Tequila Sunrise",
+                "en": "Tequila Sunrise"
+              },
+              "description": {
+                "mk": "Егзотична комбинација од текила, сок од портокал и сируп од гренадин.",
+                "en": "Beautiful highball of gold tequila, orange juice, and sweet grenadine cascade."
+              },
+              "price": 300.0,
+              "photoUrl": "/tequila-sunrise.jpg"
+            },
+            {
+              "id": "d74",
+              "name": {
+                "mk": "Hugo",
+                "en": "Hugo Cocktail"
+              },
+              "description": {
+                "mk": "Лесен и цветен коктел со ликер од бозел, просеко, нане и сода.",
+                "en": "Fruity and fresh aperitif mixing elderflower, prosecco, mint, and club soda."
+              },
+              "price": 330.0,
+              "photoUrl": "/hugo.jpg"
+            },
+            {
+              "id": "d75",
+              "name": {
+                "mk": "Mojito",
+                "en": "Mojito"
+              },
+              "description": {
+                "mk": "Освежителен кубански класик со рум, свежо нане, лимета, шеќер и сода.",
+                "en": "Classic Cuban highball with white rum, bruised mint leaves, lime, and soda."
+              },
+              "price": 330.0,
+              "photoUrl": "/mojito.jpg"
+            },
+            {
+              "id": "d76",
+              "name": {
+                "mk": "Amareto di Sorano",
+                "en": "Amaretto di Sorano"
+              },
+              "description": {
+                "mk": "Префинет италијански ликер со длабок и богат вкус на бадем.",
+                "en": "A sophisticated, aromatic Italian liqueur centered around almond notes."
+              },
+              "price": 250.0,
+              "photoUrl": "/amaretto.jpg"
+            },
+            {
+              "id": "d77",
+              "name": {
+                "mk": "Пелинковац Антика",
+                "en": "Pelinkovac Antika"
+              },
+              "description": {
+                "mk": "Премиум традиционален билен горчлив пијалок со богата арома.",
+                "en": "Premium reserve bitter herbal liqueur following a historic artisanal recipe."
+              },
+              "price": 220.0,
+              "photoUrl": "/pelinkovac-antika.jpg"
+            },
+            {
+              "id": "d78",
+              "name": {
+                "mk": "Campari",
+                "en": "Campari"
+              },
+              "description": {
+                "mk": "Иконски италијански горчливо-сладок ликер со темна рубин боја.",
+                "en": "The iconic, dark-red bittersweet Italian liqueur foundational to mixology."
+              },
+              "price": 250.0,
+              "photoUrl": "/campari.jpg"
+            },
+            {
+              "id": "d79",
+              "name": {
+                "mk": "Campari Spritz",
+                "en": "Campari Spritz"
+              },
+              "description": {
+                "mk": "Смела и горчлива варијација на шприц со Кампари и Просеко.",
+                "en": "Bold, bubbly, and pleasantly bitter highball blending Campari and prosecco."
+              },
+              "price": 330.0,
+              "photoUrl": "/campari-spritz.jpg"
+            },
+            {
+              "id": "d80",
+              "name": {
+                "mk": "Campari Tonic",
+                "en": "Campari Tonic"
+              },
+              "description": {
+                "mk": "Освежителен и едноставен микс од Кампари и тоник вода.",
+                "en": "Effervescent and bittersweet refresher mixing Campari with carbonated tonic."
+              },
+              "price": 280.0,
+              "photoUrl": "/campari-tonic.jpg"
+            },
+            {
+              "id": "d81",
+              "name": {
+                "mk": "Коњак Наполеон",
+                "en": "Napoleon Cognac"
+              },
+              "description": {
+                "mk": "Исклучителен француски коњак со комплексен вкус од дабови буриња.",
+                "en": "Distinguished French cognac presenting rich oak, vanilla, and dried fruit layers."
+              },
+              "price": 190.0,
+              "photoUrl": "/cognac.jpg"
+            },
+            {
+              "id": "d82",
+              "name": {
+                "mk": "Греено вино",
+                "en": "Mulled Wine"
+              },
+              "description": {
+                "mk": "Топло зачинето црвено вино, совршено за ладните денови.",
+                "en": "Warm, comforting red wine infused with winter aromatic spices and citrus rind."
+              },
+              "price": 260.0,
+              "photoUrl": "/mulled-wine.jpg"
+            },
+            {
+              "id": "d83",
+              "name": {
+                "mk": "Коктел The Godfather",
+                "en": "The Godfather Cocktail"
+              },
+              "description": {
+                "mk": "Моќен дует од квалитетно шкотско виски и сладок ликер Амарето.",
+                "en": "A classic two-ingredient heavy hitter balancing scotch whiskey and amaretto."
+              },
+              "price": 400.0,
+              "photoUrl": "/the-godfather.jpg"
+            },
+            {
+              "id": "d84",
+              "name": {
+                "mk": "Paloma Коктел",
+                "en": "Paloma Cocktail"
+              },
+              "description": {
+                "mk": "Мексикански класик со текила и освежителна сода од грејпфрут.",
+                "en": "Refreshing Mexican cocktail marrying silver tequila and tart grapefruit soda."
+              },
+              "price": 350.0,
+              "photoUrl": "/paloma.jpg"
+            },
+            {
+              "id": "d85",
+              "name": {
+                "mk": "Gin & Tonic",
+                "en": "Gin & Tonic"
+              },
+              "description": {
+                "mk": "Универзален омилен микс од сув џин и освежителен тоник со лимон.",
+                "en": "The timeless crisp highball combining premium dry gin and sparkling tonic."
+              },
+              "price": 300.0,
+              "photoUrl": "/gin-tonic.jpg"
+            },
+            {
+              "id": "d86",
+              "name": {
+                "mk": "Sol пиво",
+                "en": "Sol Beer"
+              },
+              "description": {
+                "mk": "Лесно и освежително мексиканско лагер пиво.",
+                "en": "Light, crisp, and ultimate refreshing Mexican lager served with a lime wedge."
+              },
+              "price": 200.0,
+              "photoUrl": "/sol-beer.jpg"
+            },
+            {
+              "id": "d87",
+              "name": {
+                "mk": "Вино Gran Sasso",
+                "en": "Gran Sasso Wine"
+              },
+              "description": {
+                "mk": "Селектирано италијанско сортно вино со исклучителен баланс.",
+                "en": "Premium imported Italian varietal bottle capturing robust and elegant notes."
+              },
+              "price": 300.0,
+              "photoUrl": "/gran-sasso.jpg"
+            },
+            {
+              "id": "d88",
+              "name": {
+                "mk": "Вино Pinot Gringo",
+                "en": "Pinot Grigio Wine"
+              },
+              "description": {
+                "mk": "Свежо, суво и лесно бело вино со овошни ароми.",
+                "en": "Crisp, elegant, and fruit-forward dry white wine perfect for light pairings."
+              },
+              "price": 300.0,
+              "photoUrl": "/pinot-grigio.jpg"
+            },
+            {
+              "id": "d89",
+              "name": {
+                "mk": "Вино Maison Castel Provence",
+                "en": "Maison Castel Provence Rosé"
+              },
+              "description": {
+                "mk": "Врвно француско розе од Прованса со нежни цветни ноти.",
+                "en": "Premium dry French rosé from Provence with crisp mineral and berry notes."
+              },
+              "price": 300.0,
+              "photoUrl": "/maison-castel.jpg"
+            },
+            {
+              "id": "d90",
+              "name": {
+                "mk": "Moscow Mule",
+                "en": "Moscow Mule"
+              },
+              "description": {
+                "mk": "Освежителен коктел со вотка, зачинето пиво од ѓумбир и лимета.",
+                "en": "Zesty and spicy cocktail balancing fine vodka, ginger beer, and lime juice."
+              },
+              "price": 350.0,
+              "photoUrl": "/moscow-mule.jpg"
+            },
+            {
+              "id": "d91",
+              "name": {
+                "mk": "Daiquiri",
+                "en": "Classic Daiquiri"
+              },
+              "description": {
+                "mk": "Традиционален баланс од бел рум, свеж сок од лимета и сируп.",
+                "en": "Clean and timeless recipe spotlighting fine white rum and fresh lime juice."
+              },
+              "price": 320.0,
+              "photoUrl": "/daiquiri.jpg"
+            },
+            {
+              "id": "d92",
+              "name": {
+                "mk": "Tom Collins",
+                "en": "Tom Collins"
+              },
+              "description": {
+                "mk": "Класичен џин коктел со сок од лимон, шеќер и газирана вода.",
+                "en": "Effervescent botanical Collins cocktail matching gin, lemon juice, and club soda."
+              },
+              "price": 320.0,
+              "photoUrl": "/tom-collins.jpg"
+            },
+            {
+              "id": "d93",
+              "name": {
+                "mk": "Cuba Libre",
+                "en": "Cuba Libre"
+              },
+              "description": {
+                "mk": "Позната едноставна комбинација од темен рум, кола и лимета.",
+                "en": "The iconic, historic highball joining rich rum, crisp cola, and fresh lime."
+              },
+              "price": 280.0,
+              "photoUrl": "/cuba-libre.jpg"
+            },
+            {
+              "id": "d94",
+              "name": {
+                "mk": "Moretti пиво",
+                "en": "Birra Moretti"
+              },
+              "description": {
+                "mk": "Автентично италијанско лагер пиво со златна боја и мазен вкус.",
+                "en": "Authentic quality Italian lager brewed using premium hops and malts."
+              },
+              "price": 180.0,
+              "photoUrl": "/moretti.jpg"
             }
           ]
         }
@@ -139,65 +1281,193 @@
       },
       "subCategories": [
         {
-          "id": "appetizers",
+          "id": "brunch",
           "name": {
-            "mk": "Предјадења",
-            "en": "Appetizers"
+            "mk": "Бранч",
+            "en": "Brunch"
           },
           "items": [
             {
               "id": "f1",
               "name": {
-                "mk": "Лути крилца",
-                "en": "Spicy Wings"
+                "mk": "Бранч Багет",
+                "en": "Brunch Baguette"
               },
               "description": {
-                "mk": "Буфало стил со сос од сино сирење",
-                "en": "Buffalo style with blue cheese dip"
+                "mk": "Свеж багет со павлака, песто, моцарела, пршута, шери домати и рукола.",
+                "en": "Fresh baguette with sour cream, pesto, mozzarella, prosciutto, cherry tomatoes, and arugula."
               },
-              "price": 10.0,
-              "photoUrl": "/wings.jpg",
-              "tags": [
-                "Spicy"
-              ]
+              "price": 290.0,
+              "photoUrl": "/brunch-baguette.jpg"
             },
             {
               "id": "f2",
               "name": {
-                "mk": "Помфрит со тартуфи",
-                "en": "Truffle Fries"
+                "mk": "Брускети",
+                "en": "Bruschetta"
               },
               "description": {
-                "mk": "Пармезан, масло од тартуфи, билки",
-                "en": "Parmesan, truffle oil, herbs"
+                "mk": "Печен леб прелиен со маслиново масло, лук, домати и зачини.",
+                "en": "Toasted artisan bread topped with olive oil, fresh garlic, tomatoes, and herbs."
               },
-              "price": 8.0,
-              "photoUrl": "/fries.jpg",
-              "tags": [
-                "Vegan"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "desserts",
-          "name": {
-            "mk": "Десерти",
-            "en": "Desserts"
-          },
-          "items": [
+              "price": 200.0,
+              "photoUrl": "/bruschetta.jpg"
+            },
             {
               "id": "f3",
               "name": {
-                "mk": "Чоколаден фондант",
-                "en": "Chocolate Fondant"
+                "mk": "Кроасан Крем",
+                "en": "Cream Croissant"
               },
               "description": {
-                "mk": "Топло срце, сладолед од ванила",
-                "en": "Warm heart, vanilla ice cream"
+                "mk": "Фрнцуско печиво полнето со богат сладок крем и додаток на малини.",
+                "en": "Flaky French pastry generously filled with sweet cream and raspberry hints."
               },
-              "price": 9.0,
-              "photoUrl": "/fondant.jpg"
+              "price": 160.0,
+              "photoUrl": "/cream-croissant.jpg"
+            },
+            {
+              "id": "f4",
+              "name": {
+                "mk": "Кроасан",
+                "en": "Classic Peanut Butter Croissant"
+              },
+              "description": {
+                "mk": "Свеж путер-кроасан во комбинација со путер од кикирики и овошен џем.",
+                "en": "Fresh butter croissant layered with premium peanut butter and fruit jam."
+              },
+              "price": 160.0,
+              "photoUrl": "/peanut-croissant.jpg"
+            },
+            {
+              "id": "f5",
+              "name": {
+                "mk": "Панаме Француски Кроасан",
+                "en": "Paname French Croissant"
+              },
+              "description": {
+                "mk": "Солен кроасан со павлака, песто, моцарела, пршута, шери домати и рукола.",
+                "en": "Savory croissant stuffed with cream, pesto, mozzarella, prosciutto, and greens."
+              },
+              "price": 180.0,
+              "photoUrl": "/paname-croissant.jpg"
+            },
+            {
+              "id": "f6",
+              "name": {
+                "mk": "Песто даска",
+                "en": "Pesto Platter"
+              },
+              "description": {
+                "mk": "Селекција на грицки и печива послужени со богат домашен песто сос.",
+                "en": "Curated finger foods and bread served alongside dynamic rich house pesto dip."
+              },
+              "price": 350.0,
+              "photoUrl": "/pesto-platter.jpg"
+            },
+            {
+              "id": "f7",
+              "name": {
+                "mk": "Чија",
+                "en": "Chia Pudding"
+              },
+              "description": {
+                "mk": "Хранлив пудинг со чија семе, млеко и прелив од свежо овошје.",
+                "en": "Nutritious and healthy clean chia seed pudding topped with fruit coulis."
+              },
+              "price": 220.0,
+              "photoUrl": "/chia-pudding.jpg"
+            },
+            {
+              "id": "f8",
+              "name": {
+                "mk": "Овесна каша",
+                "en": "Oatmeal Porridge"
+              },
+              "description": {
+                "mk": "Топла овесна каша со мед, јаткасти плодови и сезонско овошје.",
+                "en": "Warm, hearty oatmeal bowl sweetened with raw honey, nuts, and fresh berries."
+              },
+              "price": 220.0,
+              "photoUrl": "/oatmeal.jpg"
+            },
+            {
+              "id": "f9",
+              "name": {
+                "mk": "Голема даска",
+                "en": "Grand Charcuterie Platter"
+              },
+              "description": {
+                "mk": "Богата мешана селекција на премиум сувомеснати производи и сирења за друштво.",
+                "en": "Abundant gourmet selection of premium cured meats, cheeses, nuts, and spreads."
+              },
+              "price": 1500.0,
+              "photoUrl": "/large-platter.jpg"
+            },
+            {
+              "id": "f10",
+              "name": {
+                "mk": "Мала даска",
+                "en": "Small Charcuterie Platter"
+              },
+              "description": {
+                "mk": "Помала селекција на одбрани кашкавали, сирења и деликатесни сувомеснати производи.",
+                "en": "Intimate tasting plate featuring choice local cheeses and artisan cured meats."
+              },
+              "price": 750.0,
+              "photoUrl": "/small-platter.jpg"
+            },
+            {
+              "id": "f11",
+              "name": {
+                "mk": "Авокадо бранч багет",
+                "en": "Avocado Brunch Baguette"
+              },
+              "description": {
+                "mk": "Крцкав багет со пасирано авокадо, зачини, јајце и свежи додатоци.",
+                "en": "Crispy baguette loaded with seasoned smashed avocado, soft egg, and sprouts."
+              },
+              "price": 350.0,
+              "photoUrl": "/avocado-baguette.jpg"
+            },
+            {
+              "id": "f12",
+              "name": {
+                "mk": "Тирамису колач мал",
+                "en": "Tiramisu Cake Small"
+              },
+              "description": {
+                "mk": "Порција од омилениот италијански десерт со маскарпоне и кафе.",
+                "en": "Individual portion of the traditional Italian espresso and mascarpone cake."
+              },
+              "price": 160.0,
+              "photoUrl": "/tiramisu-small.jpg"
+            },
+            {
+              "id": "f13",
+              "name": {
+                "mk": "Тирамису колач голем",
+                "en": "Tiramisu Cake Large"
+              },
+              "description": {
+                "mk": "Голема, богата порција тирамису со интензивен вкус на еспресо.",
+                "en": "Generous and shareable decadent portion of our premium artisan tiramisu."
+              },
+              "price": 260.0,
+              "photoUrl": "/tiramisu-large.jpg"
+            },
+            {
+              "id": "f14",
+              "name": {
+                "mk": "Кроасан фстак",
+                "en": "Pistachio Croissant"
+              },
+              "description": {
+                "mk": "Путер-кроасан наполнет со луксузен, кадифен крем од фстаци.",
+                "en": "Flaky French croissant brimming with a premium and decadent pistachio cream fill."
+              },
+              "price": 220.0,
+              "photoUrl": "/pistachio-croissant.jpg"
             }
           ]
         }
