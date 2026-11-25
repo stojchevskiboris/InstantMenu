@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, signal, effect } from '@angular/core';
+import { Component, inject, signal, effect, ChangeDetectionStrategy } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { MenuItemComponent } from '../menu-item/menu-item';
 import { TranslatePipe } from '../../pipes/translate-pipe';
@@ -9,6 +9,7 @@ import { TranslatePipe } from '../../pipes/translate-pipe';
   standalone: true,
   imports: [CommonModule, MenuItemComponent, TranslatePipe],
   templateUrl: './menu-list.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './menu-list.css',
 })
 export class MenuListComponent {

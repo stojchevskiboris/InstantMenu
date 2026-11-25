@@ -1,4 +1,4 @@
-import { Component, input, inject, computed } from '@angular/core';
+import { Component, input, inject, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../models/menu.model';
 import { MenuService } from '../../services/menu.service';
@@ -10,6 +10,7 @@ import { CurrencyFormatPipe } from '../../pipes/currency-format.pipe';
   standalone: true,
   imports: [CommonModule, TranslatePipe, CurrencyFormatPipe],
   templateUrl: './menu-item.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './menu-item.css',
 })
 export class MenuItemComponent {

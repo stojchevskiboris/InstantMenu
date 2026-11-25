@@ -1,9 +1,9 @@
-import { Component, inject } from '@angular/core';
-import { HeaderComponent } from "./components/header/header";
-import { CategoryToggleComponent } from "./components/category-toggle/category-toggle";
-import { StickyNavComponent } from "./components/sticky-nav/sticky-nav";
-import { MenuListComponent } from "./components/menu-list/menu-list";
-import { OrderComponent } from "./components/order/order";
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { HeaderComponent } from './components/header/header';
+import { CategoryToggleComponent } from './components/category-toggle/category-toggle';
+import { StickyNavComponent } from './components/sticky-nav/sticky-nav';
+import { MenuListComponent } from './components/menu-list/menu-list';
+import { OrderComponent } from './components/order/order';
 import { ItemDetailsModalComponent } from './components/item-details-modal/item-details-modal';
 import { ThemeService } from './services/theme.service';
 
@@ -16,10 +16,11 @@ import { ThemeService } from './services/theme.service';
     StickyNavComponent,
     MenuListComponent,
     OrderComponent,
-    ItemDetailsModalComponent
-],
+    ItemDetailsModalComponent,
+  ],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  changeDetection: ChangeDetectionStrategy.Eager,
+  styleUrl: './app.css',
 })
 export class App {
   private themeService = inject(ThemeService);
