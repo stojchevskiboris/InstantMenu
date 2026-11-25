@@ -1,15 +1,23 @@
 .toggle-container {
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-muted);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-muted);
 }
 
-.btn {
-    color: var(--text-muted);
-    font-size: 0.9rem;
+.category-btn {
+  min-height: 40px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.btn.active {
-    background-color: var(--bg-app);
-    color: var(--text-main);
-    box-shadow: var(--shadow-sm);
+.category-btn:hover {
+  color: var(--text-main);
+}
+
+.category-btn.active {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  box-shadow: var(--shadow-sm);
 }

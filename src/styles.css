@@ -6,37 +6,51 @@
 
 /* Global Variables */
 :root {
-  --primary-color: #1a1a1a;
+  --primary-color: #111827;
   --secondary-color: #64748b;
-  --accent-color: #f59e0b;
+  --accent-color: #d97706;
+  --accent-soft: rgba(217, 119, 6, 0.12);
+  --accent-border: rgba(217, 119, 6, 0.45);
   --bg-app: #ffffff;
   --bg-page: #f1f5f9;
   --bg-card: #ffffff;
-  --bg-muted: #f0f0f0;
-  --text-main: #1a1a1a;
+  --bg-muted: #f3f4f6;
+  --bg-elevated: #ffffff;
+  --text-main: #111827;
   --text-muted: #64748b;
   --border-color: #e2e8f0;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 12px 28px -4px rgb(0 0 0 / 0.16);
   --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --sticky-search-height: 98px;
+  --sticky-nav-height: 56px;
 }
 
 [data-theme='dark'] {
-  --primary-color: #f8f9fa;
+  --primary-color: #f8fafc;
   --secondary-color: #94a3b8;
   --accent-color: #fbbf24;
-  --bg-app: #111827;
-  --bg-page: #030712;
-  --bg-card: #1f2937;
-  --bg-muted: #374151;
-  --text-main: #f8f9fa;
+  --accent-soft: rgba(251, 191, 36, 0.15);
+  --accent-border: rgba(251, 191, 36, 0.5);
+  --bg-app: #0f172a;
+  --bg-page: #020617;
+  --bg-card: #1e293b;
+  --bg-muted: #334155;
+  --bg-elevated: #1e293b;
+  --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --border-color: #374151;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
+  --border-color: #334155;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.45);
+  --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.55), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 14px 32px -4px rgb(0 0 0 / 0.7);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -47,7 +61,11 @@ body {
   color: var(--text-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body.sheet-open {
+  overflow: hidden;
 }
 
 /* Constrain app to mobile width on desktop */
@@ -56,10 +74,11 @@ app-root {
   max-width: 500px;
   margin: 0 auto;
   min-height: 100vh;
+  min-height: 100dvh;
   background-color: var(--bg-app);
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.06);
   position: relative;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.25s ease;
 }
 
 /* Custom scrollbar */
@@ -96,19 +115,87 @@ app-root {
   transition: var(--transition);
 }
 
-.card:hover {
-  box-shadow: var(--shadow-md);
-}
-
 .btn-pill {
   border-radius: 9999px;
   padding: 0.5rem 1.25rem;
   font-weight: 600;
+  min-height: 40px;
   transition: var(--transition);
+}
+
+.touch-target {
+  min-width: 40px;
+  min-height: 40px;
 }
 
 .transition-all {
   transition: var(--transition);
+}
+
+/* Skeleton Shimmer Animation */
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--bg-muted) 25%,
+    var(--border-color) 50%,
+    var(--bg-muted) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Bottom Sheet / Offcanvas Shared Backdrop & Container */
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(2, 6, 23, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 1060;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: fadeInBackdrop 0.2s ease-out;
+}
+
+.sheet-panel {
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  max-height: 90dvh;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  animation: slideUpSheet 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sheet-handle {
+  width: 40px;
+  height: 4px;
+  border-radius: 999px;
+  background-color: var(--border-color);
+  margin: 0.65rem auto 0.25rem;
+  flex-shrink: 0;
+}
+
+@keyframes fadeInBackdrop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUpSheet {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
 
 /* Typography refinements */

@@ -1,4 +1,5 @@
 export interface VenueInfo {
+  id?: string;
   name: { [key: string]: string };
   logoUrl: string;
   wifiPassword?: string;
@@ -15,6 +16,9 @@ export interface Product {
   price: number;
   photoUrl: string;
   tags?: string[];
+  volume?: string;
+  abv?: string;
+  allergens?: string[];
 }
 
 export interface SubCategory {
@@ -36,4 +40,11 @@ export interface MenuData {
 
 export interface OrderState {
   [productId: string]: number;
+}
+
+export interface SelectedOrderEntry {
+  productId: string;
+  quantity: number;
+  note?: string;
+  checked?: boolean;
 }

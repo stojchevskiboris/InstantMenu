@@ -1,88 +1,121 @@
-<header class="sticky-top px-4 py-3">
-  <div class="d-flex align-items-center justify-content-between mb-3">
-    <div class="d-flex align-items-center">
-      <div class="logo">
-        <img [src]="themeService.theme() === 'dark' ? 'assets/logo-dark.png' : 'assets/logo.png'">
+<header class="px-3 pt-3 pb-2">
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center min-w-0">
+      <div class="logo flex-shrink-0">
+        <img
+          [src]="themeService.theme() === 'dark' ? 'assets/logo-dark.png' : 'assets/logo.png'"
+          [alt]="venue().name | translate"
+        />
       </div>
-      <div class="ms-3">
-        <h1 class="h6 mb-0 fw-bold" style="font-size: 1.1rem; letter-spacing: -0.01em;">
+      <div class="ms-2 ps-1 min-w-0">
+        <h1 class="h6 mb-0 fw-bold text-truncate" style="font-size: 1.05rem; letter-spacing: -0.01em;">
           {{ venue().name | translate }}
         </h1>
-        <div class="d-flex align-items-center mt-1">
-          <span class="status-dot me-2" [class.open]="isVenueOpen"></span>
-          <small class="text-theme-muted" style="font-size: 0.8rem; font-weight: 500;">
-            <span> {{ venue().openHour }} </span>
-            @if(venue().openHour && venue().closeHour){
-            <span> - </span>
+        <div class="d-flex align-items-center mt-1 text-nowrap">
+          <span class="status-dot me-1 flex-shrink-0" [class.open]="isVenueOpen"></span>
+          <small class="fw-semibold me-1" [class.text-success]="isVenueOpen" [class.text-danger]="!isVenueOpen" style="font-size: 0.74rem;">
+            {{ (isVenueOpen ? 'openNow' : 'closedNow') | translate }}
+          </small>
+          <small class="text-theme-muted" style="font-size: 0.74rem; font-weight: 500;">
+            @if (venue().openHour && venue().closeHour) {
+              <span>· {{ venue().openHour }} – {{ venue().closeHour }}</span>
             }
-            <span> {{ venue().closeHour }} </span>
           </small>
         </div>
       </div>
     </div>
-    <div class="d-flex gap-2">
-      <button type="button" class="btn btn-icon rounded-circle border shadow-sm" (click)="themeService.toggleTheme()"
-        aria-label="Toggle theme">
-        <i class="bi" [class.bi-moon-fill]="themeService.theme() === 'light'"
-          [class.bi-sun-fill]="themeService.theme() === 'dark'" aria-hidden="true"></i>
+
+    <div class="d-flex gap-2 flex-shrink-0 ms-2">
+      <button
+        type="button"
+        class="btn btn-icon rounded-circle border shadow-sm"
+        (click)="themeService.toggleTheme()"
+        [attr.aria-label]="'toggleTheme' | translate : 'Switch theme'"
+      >
+        <i
+          class="bi"
+          [class.bi-moon-stars-fill]="themeService.theme() === 'light'"
+          [class.bi-sun-fill]="themeService.theme() === 'dark'"
+          aria-hidden="true"
+        ></i>
       </button>
-      <button type="button" class="btn btn-icon rounded-circle border shadow-sm" data-bs-toggle="collapse"
-        data-bs-target="#infoPanel" aria-controls="infoPanel" aria-expanded="false"
-        aria-label="Toggle venue information">
+
+      <button
+        type="button"
+        class="btn btn-icon rounded-circle border shadow-sm"
+        data-bs-toggle="collapse"
+        data-bs-target="#infoPanel"
+        aria-controls="infoPanel"
+        aria-expanded="false"
+        [attr.aria-label]="'venueInfo' | translate : 'Venue information'"
+      >
         <i class="bi bi-info-circle" aria-hidden="true"></i>
       </button>
 
       <div class="dropdown">
-        <button type="button" class="btn btn-icon rounded-circle border shadow-sm" data-bs-toggle="dropdown"
-          aria-expanded="false" aria-label="Toggle translation options" id="dropdownMenuButton">
+        <button
+          type="button"
+          class="btn btn-icon rounded-circle border shadow-sm"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          [attr.aria-label]="'select_language' | translate : 'Select Language'"
+          id="dropdownMenuButton"
+        >
           <i class="bi bi-translate" aria-hidden="true"></i>
         </button>
 
-        <ul class="dropdown-menu dropdown-menu-end bg-theme-muted" aria-labelledby="dropdownMenuButton">
+        <ul class="dropdown-menu dropdown-menu-end bg-theme-card border-theme shadow" aria-labelledby="dropdownMenuButton">
           @for (lang of languages | keyvalue; track lang.key) {
-          <li>
-            <a class="dropdown-item text-theme-main" (click)="switchLanguage(lang.key)">
-              @if (currentLang() === lang.key) {
-              <i class="bi bi-check2 me-1" aria-hidden="true"></i>
-              } @else {
-              <span class="ms-4"></span>
-              }
-              {{ lang.value }}
-            </a>
-          </li>
+            <li>
+              <button
+                type="button"
+                class="dropdown-item text-theme-main d-flex align-items-center py-2"
+                (click)="switchLanguage(lang.key)"
+              >
+                @if (currentLang() === lang.key) {
+                  <i class="bi bi-check2 me-2 fw-bold" aria-hidden="true"></i>
+                } @else {
+                  <span class="me-4"></span>
+                }
+                <span>{{ lang.value }}</span>
+              </button>
+            </li>
           }
         </ul>
       </div>
-
-
     </div>
   </div>
 
-  <div class="collapse" id="infoPanel">
-    <div class="card card-body border-0 mb-2 small shadow-sm rounded-4 bg-theme-muted">
+  <div class="collapse mt-2" id="infoPanel">
+    <div class="card card-body border mb-1 small shadow-sm rounded-4 bg-theme-muted border-theme">
       <div class="d-flex flex-column gap-2">
         <div class="d-flex align-items-center gap-2">
-          <i class="bi bi-geo-alt text-theme-muted"></i>
-          <a target="_blank" [href]="'http://maps.google.com/?q='+ languageService.translateObj(venue().address)">
+          <i class="bi bi-geo-alt text-theme-muted" aria-hidden="true"></i>
+          <a
+            target="_blank"
+            rel="noopener"
+            class="text-decoration-none"
+            [href]="'https://maps.google.com/?q=' + languageService.translateObj(venue().address)"
+          >
             <span class="text-theme-main">{{ venue().address | translate }}</span>
           </a>
         </div>
         <div class="d-flex align-items-center gap-2">
-          <i class="bi bi-telephone text-theme-muted"></i>
-          <a [href]="'tel:'+venue().phone">
+          <i class="bi bi-telephone text-theme-muted" aria-hidden="true"></i>
+          <a class="text-decoration-none" [href]="'tel:' + venue().phone">
             <span class="text-theme-main">{{ venue().phone }}</span>
           </a>
         </div>
-        <div class="d-flex align-items-center gap-2">
-          <i class="bi bi-wifi text-theme-muted"></i>
-          <span class="text-theme-main"><strong>
-              {{ 'wifi' | translate: "Wi-Fi"}}:
-            </strong>
-            {{ venue().wifiPassword | translate }}
-          </span>
-        </div>
+        @if (venue().wifiPassword) {
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-wifi text-theme-muted" aria-hidden="true"></i>
+            <span class="text-theme-main">
+              <strong>{{ 'wifi' | translate : 'Wi-Fi' }}:</strong>
+              {{ venue().wifiPassword }}
+            </span>
+          </div>
+        }
       </div>
     </div>
   </div>
-
 </header>

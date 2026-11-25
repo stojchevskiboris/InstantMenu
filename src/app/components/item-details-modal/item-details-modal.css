@@ -1,58 +1,170 @@
-.modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-    z-index: 1050;
+.sheet-scroll-body {
+  flex: 1 1 auto;
 }
 
-.modal-content-container {
-    width: 100%;
-    max-width: 440px;
-    animation: slideUp 0.3s ease-out;
+.detail-image-box {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: 250px;
 }
 
-.modal-image-container {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
+.inset-0 {
+  inset: 0;
 }
 
-.btn-close-modal {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: none;
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition);
-    box-shadow: var(--shadow-sm);
+.detail-img {
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
-[data-theme='dark'] .btn-close-modal {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
+.detail-img.loaded {
+  opacity: 1;
 }
 
-.btn-close-modal:hover {
-    background-color: #fff;
-    transform: scale(1.1);
+.btn-close-sheet {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(15, 23, 42, 0.65);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  transition: var(--transition);
 }
 
-@keyframes slideUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+.btn-close-sheet:active {
+  transform: scale(0.93);
+}
+
+.meta-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background-color: var(--bg-muted);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.meta-tag {
+  background-color: var(--accent-soft);
+  color: var(--accent-color);
+  border-color: var(--accent-border);
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+}
+
+.detail-price {
+  color: var(--accent-color);
+}
+
+.allergen-box {
+  background-color: var(--bg-muted);
+  border: 1px solid var(--border-color);
+}
+
+.allergen-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.note-chip {
+  min-height: 40px;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-muted);
+  color: var(--text-main);
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.note-chip.active {
+  background-color: var(--accent-soft);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.note-input-wrap {
+  min-height: 44px;
+  background-color: var(--bg-muted);
+  border: 1.5px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.note-input-wrap:focus-within {
+  background-color: var(--bg-card);
+  border-color: var(--accent-color);
+}
+
+.note-input {
+  min-height: 40px;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.note-input::placeholder {
+  color: var(--text-muted);
+}
+
+.btn-clear-note {
+  min-width: 40px;
+  min-height: 40px;
+  margin-right: -0.5rem;
+  color: var(--text-muted);
+}
+
+.sheet-stepper {
+  background-color: var(--bg-muted);
+  border: 1px solid var(--border-color);
+}
+
+.btn-sheet-step {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-sheet-step:disabled {
+  opacity: 0.4;
+}
+
+.sheet-qty-num {
+  min-width: 32px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.btn-primary-action {
+  min-height: 48px;
+  background-color: var(--primary-color);
+  color: var(--bg-app);
+  border: none;
+  font-size: 0.95rem;
+}
+
+.btn-primary-action:hover,
+.btn-primary-action:active {
+  opacity: 0.92;
+  color: var(--bg-app);
 }

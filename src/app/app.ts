@@ -1,5 +1,6 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { HeaderComponent } from './components/header/header';
+import { SearchBarComponent } from './components/search-bar/search-bar';
 import { CategoryToggleComponent } from './components/category-toggle/category-toggle';
 import { StickyNavComponent } from './components/sticky-nav/sticky-nav';
 import { MenuListComponent } from './components/menu-list/menu-list';
@@ -12,6 +13,7 @@ import { ThemeService } from './services/theme.service';
   standalone: true,
   imports: [
     HeaderComponent,
+    SearchBarComponent,
     CategoryToggleComponent,
     StickyNavComponent,
     MenuListComponent,
@@ -23,5 +25,5 @@ import { ThemeService } from './services/theme.service';
   styleUrl: './app.css',
 })
 export class App {
-  private themeService = inject(ThemeService);
+  private readonly themeService = inject(ThemeService);
 }

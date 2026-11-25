@@ -1,0 +1,59 @@
+<div class="sticky-search-wrapper px-3 pt-2 pb-2 bg-theme-app border-bottom">
+  <div class="search-input-box d-flex align-items-center rounded-pill px-3">
+    <i class="bi bi-search search-icon me-2" aria-hidden="true"></i>
+    <input
+      #searchInput
+      type="search"
+      class="search-field border-0 bg-transparent flex-grow-1"
+      [value]="menuService.searchQuery()"
+      [placeholder]="'searchPlaceholder' | translate : 'Search drinks, food, or tags...'"
+      [attr.aria-label]="'searchPlaceholder' | translate : 'Search drinks, food, or tags...'"
+      autocomplete="off"
+      (input)="onSearchInput($event)"
+    />
+    @if (menuService.searchQuery()) {
+      <button
+        type="button"
+        class="btn-clear-search d-flex align-items-center justify-content-center border-0 bg-transparent"
+        [attr.aria-label]="'clearSearch' | translate : 'Clear search'"
+        (click)="clearQuery()"
+      >
+        <i class="bi bi-x-circle-fill" aria-hidden="true"></i>
+      </button>
+    }
+  </div>
+
+  @if (menuService.availableTags().length > 0) {
+    <div class="d-flex overflow-auto no-scrollbar gap-2 pt-2 pb-1 align-items-center" role="tablist">
+      <button
+        #filterChip
+        type="button"
+        class="filter-chip text-nowrap"
+        [class.active]="menuService.selectedTag() === 'all'"
+        (click)="selectFilterTag('all', 0)"
+      >
+        {{ 'filterAll' | translate : 'All' }}
+      </button>
+      @for (tag of menuService.availableTags(); track tag; let idx = $index) {
+        <button
+          #filterChip
+          type="button"
+          class="filter-chip text-nowrap"
+          [class.active]="menuService.selectedTag() === tag"
+          (click)="selectFilterTag(tag, idx + 1)"
+        >
+          @if (tag === 'popular') {
+            <i class="bi bi-fire me-1 text-warning" aria-hidden="true"></i>
+          } @else if (tag === 'signature') {
+            <i class="bi bi-stars me-1 text-warning" aria-hidden="true"></i>
+          } @else if (tag === 'non-alcoholic') {
+            <i class="bi bi-cup-straw me-1" aria-hidden="true"></i>
+          } @else if (tag === 'vegetarian') {
+            <i class="bi bi-flower1 me-1 text-success" aria-hidden="true"></i>
+          }
+          {{ languageService.translateTag(tag) }}
+        </button>
+      }
+    </div>
+  }
+</div>

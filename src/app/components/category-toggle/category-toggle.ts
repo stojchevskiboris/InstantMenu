@@ -13,12 +13,12 @@ import { TranslatePipe } from '../../pipes/translate-pipe';
   styleUrl: './category-toggle.css',
 })
 export class CategoryToggleComponent {
-  private menuService = inject(MenuService);
+  public readonly menuService = inject(MenuService);
 
   categories: MainCategory[] = this.menuService.getAllCategories();
   selected = this.menuService.selectedMainCategoryId;
 
-  select(id: string) {
-    this.menuService.selectedMainCategoryId.set(id);
+  select(id: string): void {
+    this.menuService.selectMainCategory(id);
   }
 }

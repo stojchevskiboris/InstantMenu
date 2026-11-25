@@ -1,27 +1,40 @@
+:host {
+  display: block;
+  position: sticky;
+  top: var(--sticky-search-height, 98px);
+  z-index: 1025;
+}
+
 .sticky-nav {
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-    background-color: var(--bg-app);
-    border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-app);
+  border-bottom: 1px solid var(--border-color) !important;
 }
 
 .nav-pill {
-    text-decoration: none;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    border: 1px solid transparent;
-    transition: var(--transition);
+  min-height: 40px;
+  padding: 0.45rem 1.05rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-muted);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
 }
 
 .nav-pill:hover {
-    color: var(--text-main);
+  color: var(--text-main);
+  border-color: var(--text-muted);
 }
 
 .nav-pill.active {
-    background-color: var(--primary-color);
-    color: var(--bg-app);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--bg-app);
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
 }

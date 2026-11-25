@@ -1,10 +1,19 @@
-<div class="sticky-nav px-3 py-2 bg-theme-app border-bottom">
-    <div class="d-flex overflow-auto no-scrollbar gap-2 py-1">
-        @for (sub of subCategories(); track sub.id) {
-        <a [href]="'#sub-' + sub.id" class="nav-pill text-nowrap" [class.active]="activeId === 'sub-' + sub.id"
-            (click)="setActive('sub-' + sub.id)">
-            {{ sub.name | translate }}
-        </a>
-        }
+@if (!menuService.isFilterMode() && subCategories().length > 0) {
+  <nav class="sticky-nav px-3 py-2 bg-theme-app border-bottom" aria-label="Subcategories">
+    <div class="d-flex overflow-auto no-scrollbar gap-2 align-items-center">
+      @for (sub of subCategories(); track sub.id) {
+        <button
+          #navPill
+          type="button"
+          class="nav-pill text-nowrap"
+          [attr.data-section-id]="'sub-' + sub.id"
+          [attr.aria-current]="activeId() === 'sub-' + sub.id ? 'true' : null"
+          [class.active]="activeId() === 'sub-' + sub.id"
+          (click)="scrollToSection('sub-' + sub.id)"
+        >
+          {{ sub.name | translate }}
+        </button>
+      }
     </div>
-</div>
+  </nav>
+}

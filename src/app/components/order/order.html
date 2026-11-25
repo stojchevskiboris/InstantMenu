@@ -1,80 +1,247 @@
-@if (totalQuantity() > 0) {
-<div class="fixed-bottom order-container mx-auto px-3 pb-3">
-    <!-- Order Details Card (Collapsible) -->
-    <div class="collapse mb-2" id="orderDetails">
-        <div class="card order-card shadow-lg rounded-4 overflow-hidden border-0 bg-theme-card">
-            <div class="card-header bg-transparent border-bottom p-3 d-flex justify-content-between align-items-center">
-                <h6 class="mb-0 fw-bold">{{ 'your_selection' | translate : 'Your Selection' }}</h6>
-                <button type="button" class="btn-close" data-bs-toggle="collapse" data-bs-target="#orderDetails"
-                    aria-label="Close"></button>
-            </div>
-            <div class="card-body p-0 overflow-auto" style="max-height: 40vh;">
-                <div class="order-items-list p-3">
-                    @for (item of orderItems(); track item.product.id) {
-                    <div class="d-flex align-items-center justify-content-between mb-3 last-mb-0">
-                        <div class="d-flex align-items-center gap-3">
-                            @if (item.product.photoUrl) {
-                            <img [src]="'assets/products'+item.product.photoUrl" [alt]="item.product.name | translate"
-                                class="rounded-3" style="width: 48px; height: 48px; object-fit: cover;"
-                                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            } @else {
-                            <div class="bg-theme-muted rounded-3 d-flex align-items-center justify-content-center"
-                                style="width: 48px; height: 48px;">
-                                <i class="bi bi-cup-hot text-theme-muted"></i>
-                            </div>
-                            }
-                            <div>
-                                <h6 class="mb-0 fw-bold small">{{ item.product.name | translate }}
-                                </h6>
-                                <span class="text-theme-muted extra-small">{{ item.product.price | currencyPrice }}</span>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center gap-2">
-                            <button class="btn-qty-sm" (click)="decrement(item.product.id)">
-                                <i class="bi bi-dash"></i>
-                            </button>
-                            <span class="qty-text-sm">{{ item.quantity }}</span>
-                            <button class="btn-qty-sm" (click)="increment(item.product.id)">
-                                <i class="bi bi-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    }
-                </div>
-            </div>
-            <div class="card-footer bg-theme-muted border-top p-3">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="text-theme-muted small">
-                        {{ 'subtotal' | translate : 'Subtotal' }}</span>
-                    <span class="fw-bold">{{ orderTotal() | currencyPrice }}</span>
-                </div>
-                <button class="btn btn-outline-danger btn-sm w-100 rounded-3" (click)="clearOrder()">
-                    {{ 'clear_order' | translate : 'Clear Order' }}
-                </button>
-            </div>
+@if (orderSelection.totalItems() > 0) {
+  @if (!orderSelection.isDrawerOpen()) {
+    <div class="floating-bar-wrap fixed-bottom mx-auto px-3">
+      <button
+        type="button"
+        class="floating-order-bar w-100 rounded-pill shadow-lg px-3 py-2 border-0 d-flex align-items-center justify-content-between"
+        (click)="openDrawer()"
+      >
+        <div class="d-flex align-items-center gap-3">
+          <span class="count-pill rounded-pill fw-bold d-inline-flex align-items-center justify-content-center">
+            {{ orderSelection.totalItems() }}
+          </span>
+          <span class="fw-bold bar-label">
+            {{ 'myOrder' | translate : 'My Order' }}
+          </span>
         </div>
-    </div>
 
-    <!-- Summary Bar -->
-    <div class="order-summary bg-primary text-white rounded-pill shadow-lg p-2 d-flex align-items-center justify-content-between"
-        data-bs-toggle="collapse" data-bs-target="#orderDetails" role="button">
-        <div class="d-flex align-items-center ms-3">
-            <div class="bg-theme-app text-theme-main rounded-circle d-flex align-items-center justify-content-center fw-bold me-3"
-                style="width: 32px; height: 32px; font-size: 0.9rem;">
-                {{ totalQuantity() }}
-            </div>
-            <div>
-                <span class="d-block fw-bold" style="font-size: 0.9rem; line-height: 1.2;">{{
-                    'view_order' | translate : 'View Order' }}</span>
-                <span class="extra-small opacity-75">{{ orderItems().length }}
-                    {{ 'items_selected' | translate : 'items selected' }}
-                </span>
-            </div>
+        <div class="d-flex align-items-center gap-2">
+          <span class="fw-bold bar-total">
+            {{ orderSelection.totalPrice() | currencyPrice }}
+          </span>
+          <i class="bi bi-chevron-up fs-6" aria-hidden="true"></i>
         </div>
-        <div class="me-3 text-end">
-            <span class="d-block extra-small opacity-75">{{ 'total' | translate :'Total' }}</span>
-            <span class="fw-bold" style="font-size: 1.1rem;">{{ orderTotal() | currencyPrice }}</span>
-        </div>
+      </button>
     </div>
-</div>
+  }
+
+  @if (orderSelection.isDrawerOpen()) {
+    <div class="sheet-backdrop" (click)="closeDrawer()" role="dialog" aria-modal="true">
+      <div
+        class="sheet-panel order-drawer-panel"
+        [class.waiter-mode-active]="orderSelection.isWaiterMode()"
+        (click)="$event.stopPropagation()"
+      >
+        <div class="sheet-handle"></div>
+
+        <div class="drawer-header px-3 pt-1 pb-3 border-bottom border-theme d-flex align-items-center justify-content-between gap-2">
+          <div class="d-flex align-items-center gap-2 min-w-0">
+            <h5 class="mb-0 fw-bold text-truncate">
+              {{ 'myOrder' | translate : 'My Order' }}
+            </h5>
+            <span class="badge rounded-pill bg-theme-muted text-theme-main border border-theme">
+              {{ orderSelection.totalItems() }}
+            </span>
+          </div>
+
+          <div class="d-flex align-items-center gap-2 flex-shrink-0">
+            <button
+              type="button"
+              class="btn-waiter-toggle rounded-pill fw-bold d-inline-flex align-items-center gap-1 px-3"
+              [class.active]="orderSelection.isWaiterMode()"
+              (click)="toggleWaiterMode()"
+            >
+              <i
+                class="bi"
+                [class.bi-person-workspace]="!orderSelection.isWaiterMode()"
+                [class.bi-pencil-square]="orderSelection.isWaiterMode()"
+                aria-hidden="true"
+              ></i>
+              <span>
+                {{ (orderSelection.isWaiterMode() ? 'exitWaiterMode' : 'waiterMode') | translate }}
+              </span>
+            </button>
+
+            <button
+              type="button"
+              class="btn-drawer-close rounded-circle d-inline-flex align-items-center justify-content-center"
+              [attr.aria-label]="'close' | translate : 'Close'"
+              (click)="closeDrawer()"
+            >
+              <i class="bi bi-x-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        @if (orderSelection.isWaiterMode()) {
+          <div class="waiter-banner px-3 py-2 d-flex align-items-center justify-content-between gap-2">
+            <span class="small fw-semibold">
+              <i class="bi bi-check2-square me-1" aria-hidden="true"></i>
+              {{ 'waiterModeHint' | translate }}
+            </span>
+            <span class="badge rounded-pill waiter-progress-badge">
+              {{ orderSelection.checkedCount() }} / {{ orderSelection.selectedItems().length }}
+            </span>
+          </div>
+        }
+
+        <div class="drawer-body overflow-auto p-3">
+          @if (orderSelection.isWaiterMode()) {
+            <div class="d-flex flex-column gap-2">
+              @for (item of orderSelection.selectedItems(); track item.product.id) {
+                <label
+                  class="waiter-check-row rounded-4 p-3 d-flex align-items-start gap-3"
+                  [class.is-checked]="item.checked"
+                >
+                  <input
+                    type="checkbox"
+                    class="waiter-checkbox flex-shrink-0 mt-1"
+                    [checked]="item.checked"
+                    (change)="toggleChecked(item.product.id)"
+                  />
+                  <div class="flex-grow-1 min-w-0">
+                    <div class="d-flex align-items-baseline justify-content-between gap-2">
+                      <div class="waiter-item-title fw-bold">
+                        <span class="waiter-qty-prefix me-2">{{ item.quantity }}&times;</span>
+                        <span>{{ item.product.name | translate }}</span>
+                      </div>
+                      <span class="fw-bold text-nowrap waiter-subtotal">
+                        {{ item.subtotal | currencyPrice }}
+                      </span>
+                    </div>
+
+                    @if (showLocalSubtitle(item.product)) {
+                      <div class="waiter-local-sub small mt-1">
+                        {{ item.product.name['mk'] }}
+                      </div>
+                    }
+
+                    @if (item.note) {
+                      <div class="waiter-note-callout mt-2 px-2 py-1 rounded-2 fw-semibold">
+                        <i class="bi bi-chat-square-quote-fill me-1" aria-hidden="true"></i>
+                        {{ item.note }}
+                      </div>
+                    }
+                  </div>
+                </label>
+              }
+            </div>
+          } @else {
+            <div class="d-flex flex-column gap-3">
+              @for (item of orderSelection.selectedItems(); track item.product.id) {
+                <div class="order-line-card rounded-4 p-2 pe-3 d-flex align-items-center justify-content-between gap-2">
+                  <div class="d-flex align-items-center gap-3 min-w-0 flex-grow-1">
+                    <div class="order-thumb rounded-3 overflow-hidden flex-shrink-0 d-flex align-items-center justify-content-center bg-theme-muted">
+                      @if (item.product.photoUrl && !failedThumbs()[item.product.id]) {
+                        <img
+                          [src]="'assets/products' + item.product.photoUrl"
+                          [alt]="item.product.name | translate"
+                          class="w-100 h-100 object-fit-cover"
+                          (error)="onThumbError(item.product.id)"
+                        />
+                      } @else {
+                        <i class="bi bi-cup-hot text-theme-muted fs-5" aria-hidden="true"></i>
+                      }
+                    </div>
+
+                    <div class="min-w-0 flex-grow-1">
+                      <h6 class="mb-0 fw-bold text-truncate text-theme-main" style="font-size: 0.92rem;">
+                        {{ item.product.name | translate }}
+                      </h6>
+                      <div class="d-flex align-items-center gap-1 small text-theme-muted flex-wrap">
+                        <span class="text-nowrap">{{ item.product.price | currencyPrice }}</span>
+                        <span>&middot;</span>
+                        <strong class="text-theme-main text-nowrap">{{ item.subtotal | currencyPrice }}</strong>
+                      </div>
+
+                      <button
+                        type="button"
+                        class="btn-edit-note border-0 bg-transparent p-0 mt-1 text-start text-truncate d-inline-flex align-items-center gap-1"
+                        (click)="editItemNote(item.product)"
+                      >
+                        <i class="bi bi-pencil" aria-hidden="true"></i>
+                        @if (item.note) {
+                          <span class="text-truncate">{{ item.note }}</span>
+                        } @else {
+                          <span>{{ 'editNote' | translate : 'Add or edit note' }}</span>
+                        }
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="drawer-stepper d-inline-flex align-items-center rounded-pill p-1 flex-shrink-0">
+                    <button
+                      type="button"
+                      class="btn-drawer-step"
+                      [attr.aria-label]="(item.quantity === 1 ? 'removeItem' : 'decreaseQty') | translate"
+                      (click)="decrement(item.product.id)"
+                    >
+                      @if (item.quantity === 1) {
+                        <i class="bi bi-trash3 text-danger" aria-hidden="true"></i>
+                      } @else {
+                        <i class="bi bi-dash-lg" aria-hidden="true"></i>
+                      }
+                    </button>
+                    <span class="drawer-qty-num">{{ item.quantity }}</span>
+                    <button
+                      type="button"
+                      class="btn-drawer-step"
+                      [attr.aria-label]="'increaseQty' | translate"
+                      (click)="increment(item.product.id)"
+                    >
+                      <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="drawer-footer p-3 border-top border-theme bg-theme-card">
+          <div class="d-flex justify-content-between align-items-baseline mb-3">
+            <span class="fw-bold text-theme-muted">
+              {{ 'grandTotal' | translate : 'Grand Total' }}
+            </span>
+            <span class="grand-total-amount fw-bold text-theme-main">
+              {{ orderSelection.totalPrice() | currencyPrice }}
+            </span>
+          </div>
+
+          @if (confirmingClear()) {
+            <div class="confirm-clear-box rounded-3 p-2 d-flex align-items-center justify-content-between gap-2">
+              <span class="small fw-semibold ps-2">
+                {{ 'confirmClearPrompt' | translate : 'Clear your list for a new round?' }}
+              </span>
+              <div class="d-flex gap-2 flex-shrink-0">
+                <button
+                  type="button"
+                  class="btn btn-sm rounded-pill px-3 btn-cancel-clear fw-semibold"
+                  (click)="cancelClearConfirmation()"
+                >
+                  {{ 'cancel' | translate : 'Cancel' }}
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-danger rounded-pill px-3 fw-bold btn-yes-clear"
+                  (click)="confirmClearOrder()"
+                >
+                  {{ 'confirmClearYes' | translate : 'Yes, clear' }}
+                </button>
+              </div>
+            </div>
+          } @else {
+            <button
+              type="button"
+              class="btn btn-outline-danger w-100 rounded-pill fw-bold btn-clear-trigger"
+              (click)="requestClearConfirmation()"
+            >
+              <i class="bi bi-trash3 me-1" aria-hidden="true"></i>
+              {{ 'clearOrder' | translate : 'Clear List' }}
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+  }
 }

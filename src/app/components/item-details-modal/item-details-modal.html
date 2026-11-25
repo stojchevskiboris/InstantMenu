@@ -1,28 +1,178 @@
-@if (menuService.selectedProduct(); as item) {
-<div class="modal-backdrop d-flex align-items-center justify-content-center p-3" (click)="close()">
-    <div class="modal-content-container bg-theme-app rounded-4 overflow-hidden shadow-lg position-relative" (click)="$event.stopPropagation()">
-        <button type="button" class="btn-close-modal position-absolute top-0 end-0 m-3 z-3" aria-label="Close" (click)="close()">
-            <i class="bi bi-x-lg"></i>
-        </button>
+@if (selectedItem(); as item) {
+  <div class="sheet-backdrop" (click)="close()" role="dialog" aria-modal="true">
+    <div class="sheet-panel position-relative" (click)="$event.stopPropagation()">
+      <div class="sheet-handle"></div>
 
-        <div class="modal-image-container bg-theme-muted">
-            @if (item.photoUrl) {
-            <img [src]="'assets/products' + item.photoUrl" class="w-100 h-100 object-fit-cover"
-                [alt]="languageService.translateObj(item.name)"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            }
-            <div class="placeholder-img w-100 h-100 align-items-center justify-content-center bg-theme-muted text-theme-muted p-2 text-center"
-                style="font-size: 1rem; display: none;">
-                {{ languageService.translateObj(item.name) }}
+      <button
+        type="button"
+        class="btn-close-sheet position-absolute top-0 end-0 m-3 z-3"
+        [attr.aria-label]="'close' | translate : 'Close'"
+        (click)="close()"
+      >
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+
+      <div class="sheet-scroll-body overflow-auto">
+        <div class="detail-image-box position-relative bg-theme-muted overflow-hidden">
+          @if (!imgLoaded() && !imgError()) {
+            <div class="skeleton-shimmer position-absolute inset-0 w-100 h-100"></div>
+          }
+
+          @if (item.photoUrl && !imgError()) {
+            <img
+              [src]="'assets/products' + item.photoUrl"
+              class="detail-img w-100 h-100 object-fit-cover"
+              [class.loaded]="imgLoaded()"
+              [alt]="item.name | translate"
+              (load)="onImgLoad()"
+              (error)="onImgError()"
+            />
+          }
+
+          @if (imgError()) {
+            <div class="w-100 h-100 d-flex flex-column align-items-center justify-content-center text-theme-muted opacity-75">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
+                <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
+                <line x1="6" y1="2" x2="6" y2="4"></line>
+                <line x1="10" y1="2" x2="10" y2="4"></line>
+                <line x1="14" y1="2" x2="14" y2="4"></line>
+              </svg>
             </div>
+          }
         </div>
 
-        <div class="p-4">
-            <h4 class="mb-2 fw-bold text-theme-main">{{ languageService.translateObj(item.name) }}</h4>
-            <p class="text-theme-muted mb-0" style="font-size: 1rem; line-height: 1.6;">
-                {{ languageService.translateObj(item.description) }}
-            </p>
+        <div class="p-3 p-sm-4">
+          @if (item.tags?.length || item.volume || item.abv) {
+            <div class="d-flex flex-wrap gap-2 mb-2">
+              @for (tag of item.tags || []; track tag) {
+                <span class="meta-badge meta-tag">
+                  {{ languageService.translateTag(tag) }}
+                </span>
+              }
+              @if (item.volume) {
+                <span class="meta-badge">
+                  <i class="bi bi-cup-straw me-1" aria-hidden="true"></i>{{ item.volume }}
+                </span>
+              }
+              @if (item.abv) {
+                <span class="meta-badge">
+                  <i class="bi bi-droplet-half me-1" aria-hidden="true"></i>{{ item.abv }} {{ 'abvLabel' | translate : 'ABV' }}
+                </span>
+              }
+            </div>
+          }
+
+          <div class="d-flex align-items-start justify-content-between gap-3 mb-2">
+            <h4 class="mb-0 fw-bold text-theme-main">{{ item.name | translate }}</h4>
+            <span class="h5 mb-0 fw-bold text-nowrap detail-price">{{ item.price | currencyPrice }}</span>
+          </div>
+
+          <p class="text-theme-muted mb-3" style="font-size: 0.94rem; line-height: 1.55;">
+            {{ item.description | translate }}
+          </p>
+
+          @if (item.allergens && item.allergens.length > 0) {
+            <div class="allergen-box d-flex align-items-center flex-wrap gap-1 mb-3 p-2 rounded-3">
+              <span class="small fw-semibold text-theme-muted me-1">
+                <i class="bi bi-info-circle me-1" aria-hidden="true"></i>{{ 'allergensLabel' | translate : 'Allergens' }}:
+              </span>
+              @for (alg of item.allergens; track alg) {
+                <span class="allergen-pill">{{ languageService.translateAllergen(alg) }}</span>
+              }
+            </div>
+          }
+
+          <hr class="border-theme my-3" />
+
+          <div class="note-section">
+            <label for="waiterNoteInput" class="form-label small fw-bold text-theme-main mb-2 d-flex align-items-center gap-1">
+              <i class="bi bi-pencil-square" aria-hidden="true"></i>
+              {{ 'addNote' | translate : 'Preparation note for waiter' }}
+            </label>
+
+            <div class="d-flex flex-wrap gap-2 mb-2">
+              @for (chipKey of quickNoteKeys(); track chipKey) {
+                <button
+                  type="button"
+                  class="note-chip"
+                  [class.active]="isChipActive(chipKey)"
+                  (click)="toggleQuickChip(chipKey)"
+                >
+                  @if (isChipActive(chipKey)) {
+                    <i class="bi bi-check2 me-1" aria-hidden="true"></i>
+                  } @else {
+                    <i class="bi bi-plus me-1" aria-hidden="true"></i>
+                  }
+                  {{ chipKey | translate }}
+                </button>
+              }
+            </div>
+
+            <div class="note-input-wrap d-flex align-items-center rounded-3 px-3">
+              <input
+                id="waiterNoteInput"
+                type="text"
+                maxlength="120"
+                class="note-input border-0 bg-transparent flex-grow-1"
+                [value]="currentNote()"
+                [placeholder]="'notePlaceholder' | translate : 'E.g. No ice, cold milk...'"
+                (input)="onNoteInput($event)"
+              />
+              @if (currentNote()) {
+                <button
+                  type="button"
+                  class="btn-clear-note border-0 bg-transparent d-flex align-items-center justify-content-center"
+                  [attr.aria-label]="'clearSearch' | translate"
+                  (click)="clearNote()"
+                >
+                  <i class="bi bi-x-circle-fill" aria-hidden="true"></i>
+                </button>
+              }
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="sheet-footer p-3 border-top border-theme bg-theme-card d-flex align-items-center gap-3">
+        <div class="sheet-stepper d-inline-flex align-items-center rounded-pill p-1">
+          <button
+            type="button"
+            class="btn-sheet-step"
+            [disabled]="quantity() === 0"
+            [attr.aria-label]="'decreaseQty' | translate"
+            (click)="decrement()"
+          >
+            @if (quantity() === 1) {
+              <i class="bi bi-trash3 text-danger" aria-hidden="true"></i>
+            } @else {
+              <i class="bi bi-dash-lg" aria-hidden="true"></i>
+            }
+          </button>
+          <span class="sheet-qty-num">{{ quantity() }}</span>
+          <button
+            type="button"
+            class="btn-sheet-step"
+            [attr.aria-label]="'increaseQty' | translate"
+            (click)="increment()"
+          >
+            <i class="bi bi-plus-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-primary-action flex-grow-1 rounded-pill fw-bold d-flex align-items-center justify-content-between px-4"
+          (click)="onPrimaryAction()"
+        >
+          <span>
+            {{ (quantity() === 0 ? 'addToOrder' : 'done') | translate }}
+          </span>
+          <span>
+            {{ (item.price * (quantity() === 0 ? 1 : quantity())) | currencyPrice }}
+          </span>
+        </button>
+      </div>
     </div>
-</div>
+  </div>
 }

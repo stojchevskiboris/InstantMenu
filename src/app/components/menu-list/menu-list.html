@@ -1,28 +1,89 @@
-<div class="px-4 py-3 mb-5">
-    @for (sub of subCategories(); track sub.id) {
-    <div class="mb-2 pt-3 pb-2 category-section" [id]="'sub-' + sub.id"
-        [class.highlighted]="highlightedId() === 'sub-' + sub.id">
-        <div class="d-flex align-items-center justify-content-between mb-4">
-            <h5 class="mb-0 fw-bold">{{ sub.name | translate }}</h5>
-            <span class="badge bg-theme-muted text-theme-muted rounded-pill px-3 py-2 border fw-normal"
-                style="font-size: 0.75rem;">
-                {{ sub.items.length }} {{ 'items' | translate : 'items' }}
+<div
+  class="menu-list-wrapper px-3 py-3"
+  [class.has-floating-order]="orderSelection.totalItems() > 0"
+>
+  @if (menuService.isFilterMode()) {
+    @if (menuService.totalFilteredMatches() > 0) {
+      <div class="d-flex align-items-center justify-content-between mb-3 px-1">
+        <span class="small fw-semibold text-theme-muted">
+          {{ menuService.totalFilteredMatches() }} {{ 'searchResultsCount' | translate : 'matches' }}
+        </span>
+        <button
+          type="button"
+          class="btn btn-link btn-sm p-0 text-decoration-none fw-semibold reset-link"
+          (click)="resetSearch()"
+        >
+          {{ 'resetSearch' | translate : 'Reset search' }}
+        </button>
+      </div>
+
+      @for (group of menuService.filteredCategoryGroups(); track group.id) {
+        <section class="mb-4">
+          <div class="main-group-banner d-flex align-items-center justify-content-between px-3 py-2 mb-3 rounded-3 bg-theme-muted">
+            <span class="fw-bold text-theme-main">{{ group.name | translate }}</span>
+            <span class="badge rounded-pill bg-theme-card text-theme-main border border-theme px-2 py-1">
+              {{ group.matchCount }}
             </span>
+          </div>
+
+          @for (sub of group.subCategories; track sub.id) {
+            <div class="mb-3">
+              <div class="d-flex align-items-center justify-content-between mb-2 px-1">
+                <h6 class="mb-0 fw-bold text-theme-muted text-uppercase" style="font-size: 0.75rem; letter-spacing: 0.06em;">
+                  {{ sub.name | translate }} ({{ sub.items.length }})
+                </h6>
+              </div>
+
+              <div class="d-flex flex-column gap-3">
+                @for (item of sub.items; track item.id) {
+                  <app-menu-item [item]="item"></app-menu-item>
+                }
+              </div>
+            </div>
+          }
+        </section>
+      }
+    } @else {
+      <div class="empty-state text-center py-5 px-3 my-3 rounded-4 bg-theme-card border border-theme">
+        <div class="empty-icon-circle mx-auto mb-3 d-flex align-items-center justify-content-center rounded-circle bg-theme-muted">
+          <i class="bi bi-search text-theme-muted fs-3" aria-hidden="true"></i>
+        </div>
+        <h5 class="fw-bold mb-2 text-theme-main">
+          {{ 'noResults' | translate : 'No matching items found' }}
+        </h5>
+        <p class="text-theme-muted small mb-4 mx-auto" style="max-width: 280px;">
+          {{ 'noResultsHint' | translate : 'Try another search term or reset your active filters.' }}
+        </p>
+        <button
+          type="button"
+          class="btn btn-pill btn-reset-search px-4"
+          (click)="resetSearch()"
+        >
+          <i class="bi bi-arrow-counterclockwise me-1" aria-hidden="true"></i>
+          {{ 'resetSearch' | translate : 'Reset search' }}
+        </button>
+      </div>
+    }
+  } @else {
+    @for (sub of subCategories(); track sub.id) {
+      <section class="mb-4 pt-2 category-section" [id]="'sub-' + sub.id">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h5 class="section-heading mb-0 fw-bold">{{ sub.name | translate }}</h5>
+          <span
+            class="badge bg-theme-muted text-theme-muted rounded-pill px-3 py-2 border border-theme fw-medium"
+            style="font-size: 0.75rem;"
+          >
+            {{ sub.items.length }}
+            {{ (sub.items.length === 1 ? 'itemSingular' : 'itemsCount') | translate : 'items' }}
+          </span>
         </div>
 
-        <div class="row g-3">
-            @for (item of sub.items; track item.id) {
-            <div class="col-12">
-                <app-menu-item [item]="item"></app-menu-item>
-            </div>
-            }
+        <div class="d-flex flex-column gap-3">
+          @for (item of sub.items; track item.id) {
+            <app-menu-item [item]="item"></app-menu-item>
+          }
         </div>
-    </div>
-    } @empty {
-    <div class="text-center py-5">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
+      </section>
     }
+  }
 </div>
