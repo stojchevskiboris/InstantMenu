@@ -1,4 +1,4 @@
-import { Component, inject, effect } from '@angular/core';
+import { Component, inject, effect, ChangeDetectionStrategy } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '../../pipes/translate-pipe';
@@ -8,6 +8,7 @@ import { TranslatePipe } from '../../pipes/translate-pipe';
   standalone: true,
   imports: [CommonModule, TranslatePipe],
   templateUrl: './sticky-nav.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './sticky-nav.css',
 })
 export class StickyNavComponent {

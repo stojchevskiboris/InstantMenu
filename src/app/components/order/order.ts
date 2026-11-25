@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuService } from '../../services/menu.service';
 import { TranslatePipe } from '../../pipes/translate-pipe';
@@ -9,6 +9,7 @@ import { CurrencyFormatPipe } from '../../pipes/currency-format.pipe';
   standalone: true,
   imports: [CommonModule, TranslatePipe, CurrencyFormatPipe],
   templateUrl: './order.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './order.css',
 })
 export class OrderComponent {

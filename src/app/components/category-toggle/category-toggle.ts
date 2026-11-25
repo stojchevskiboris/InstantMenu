@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { MainCategory } from '../../models/menu.model';
 import { CommonModule } from '@angular/common';
@@ -9,6 +9,7 @@ import { TranslatePipe } from '../../pipes/translate-pipe';
   standalone: true,
   imports: [CommonModule, TranslatePipe],
   templateUrl: './category-toggle.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './category-toggle.css',
 })
 export class CategoryToggleComponent {

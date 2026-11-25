@@ -1,4 +1,4 @@
-import { Component, inject, computed, OnInit } from '@angular/core';
+import { Component, inject, computed, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { ThemeService } from '../../services/theme.service';
 import { LanguageService } from '../../services/language.service';
@@ -10,6 +10,7 @@ import { TranslatePipe } from '../../pipes/translate-pipe';
   standalone: true,
   imports: [CommonModule, TranslatePipe],
   templateUrl: './header.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './header.css',
 })
 export class HeaderComponent implements OnInit {
