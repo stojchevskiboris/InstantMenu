@@ -1,31 +1,43 @@
 <header class="px-3 pt-3 pb-2">
-  <div class="d-flex align-items-center justify-content-between">
-    <div class="d-flex align-items-center min-w-0">
+  <div class="d-flex align-items-center justify-content-between gap-2">
+    <div class="venue-brand d-flex align-items-center min-w-0 flex-grow-1">
       <div class="logo flex-shrink-0">
         <img
           [src]="themeService.theme() === 'dark' ? 'assets/logo-dark.png' : 'assets/logo.png'"
           [alt]="venue().name | translate"
         />
       </div>
-      <div class="ms-2 ps-1 min-w-0">
-        <h1 class="h6 mb-0 fw-bold text-truncate" style="font-size: 1.05rem; letter-spacing: -0.01em;">
+      <div class="ms-2 ps-1 min-w-0 flex-grow-1">
+        <h1
+          class="venue-title h6 mb-0 fw-bold"
+          [title]="venue().name | translate"
+        >
           {{ venue().name | translate }}
         </h1>
-        <div class="d-flex align-items-center mt-1 text-nowrap">
+        <div class="d-flex align-items-center mt-1 min-w-0">
           <span class="status-dot me-1 flex-shrink-0" [class.open]="isVenueOpen"></span>
-          <small class="fw-semibold me-1" [class.text-success]="isVenueOpen" [class.text-danger]="!isVenueOpen" style="font-size: 0.74rem;">
+          <small
+            class="fw-semibold me-1 flex-shrink-0"
+            [class.text-success]="isVenueOpen"
+            [class.text-danger]="!isVenueOpen"
+            style="font-size: 0.74rem;"
+          >
             {{ (isVenueOpen ? 'openNow' : 'closedNow') | translate }}
           </small>
-          <small class="text-theme-muted" style="font-size: 0.74rem; font-weight: 500;">
-            @if (venue().openHour && venue().closeHour) {
-              <span>· {{ venue().openHour }} – {{ venue().closeHour }}</span>
-            }
-          </small>
+          @if (venue().openHour && venue().closeHour) {
+            <small
+              class="text-theme-muted text-truncate"
+              style="font-size: 0.74rem; font-weight: 500;"
+            >
+              · {{ venue().openHour }} – {{ venue().closeHour }}
+            </small>
+          }
         </div>
       </div>
     </div>
 
-    <div class="d-flex gap-2 flex-shrink-0 ms-2">
+    <!-- Desktop actions (above tablet) -->
+    <div class="d-none d-lg-flex gap-2 flex-shrink-0">
       <button
         type="button"
         class="btn btn-icon rounded-circle border shadow-sm"
@@ -43,11 +55,11 @@
       <button
         type="button"
         class="btn btn-icon rounded-circle border shadow-sm"
-        data-bs-toggle="collapse"
-        data-bs-target="#infoPanel"
+        [class.is-active]="isInfoOpen()"
         aria-controls="infoPanel"
-        aria-expanded="false"
+        [attr.aria-expanded]="isInfoOpen()"
         [attr.aria-label]="'venueInfo' | translate : 'Venue information'"
+        (click)="toggleInfoPanel()"
       >
         <i class="bi bi-info-circle" aria-hidden="true"></i>
       </button>
@@ -64,7 +76,10 @@
           <i class="bi bi-translate" aria-hidden="true"></i>
         </button>
 
-        <ul class="dropdown-menu dropdown-menu-end bg-theme-card border-theme shadow" aria-labelledby="dropdownMenuButton">
+        <ul
+          class="dropdown-menu dropdown-menu-end header-actions-menu bg-theme-card border-theme shadow"
+          aria-labelledby="dropdownMenuButton"
+        >
           @for (lang of languages | keyvalue; track lang.key) {
             <li>
               <button
@@ -84,32 +99,109 @@
         </ul>
       </div>
     </div>
+
+    <!-- Tablet and smaller actions dropdown -->
+    <div class="dropdown d-lg-none flex-shrink-0">
+      <button
+        type="button"
+        class="btn btn-icon rounded-circle border shadow-sm"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        [attr.aria-label]="'moreOptions' | translate : 'More options'"
+        id="mobileHeaderActionsDropdown"
+      >
+        <i class="bi bi-three-dots-vertical" aria-hidden="true"></i>
+      </button>
+
+      <ul
+        class="dropdown-menu dropdown-menu-end header-actions-menu bg-theme-card border-theme shadow"
+        aria-labelledby="mobileHeaderActionsDropdown"
+      >
+        <li>
+          <button
+            type="button"
+            class="dropdown-item text-theme-main d-flex align-items-center gap-2 py-2"
+            (click)="themeService.toggleTheme()"
+          >
+            <i
+              class="bi"
+              [class.bi-moon-stars-fill]="themeService.theme() === 'light'"
+              [class.bi-sun-fill]="themeService.theme() === 'dark'"
+              aria-hidden="true"
+            ></i>
+            <span>{{ 'toggleTheme' | translate : 'Switch theme' }}</span>
+          </button>
+        </li>
+
+        <li>
+          <button
+            type="button"
+            class="dropdown-item text-theme-main d-flex align-items-center justify-content-between gap-2 py-2"
+            aria-controls="infoPanel"
+            [attr.aria-expanded]="isInfoOpen()"
+            (click)="toggleInfoPanel()"
+          >
+            <span class="d-flex align-items-center gap-2">
+              <i class="bi bi-info-circle" aria-hidden="true"></i>
+              <span>{{ 'venueInfo' | translate : 'Venue information' }}</span>
+            </span>
+            @if (isInfoOpen()) {
+              <i class="bi bi-check2 fw-bold" aria-hidden="true"></i>
+            }
+          </button>
+        </li>
+
+        <li><hr class="dropdown-divider border-theme my-1" /></li>
+
+        <li>
+          <h6 class="dropdown-header text-theme-muted d-flex align-items-center gap-2 py-1">
+            <i class="bi bi-translate" aria-hidden="true"></i>
+            <span>{{ 'select_language' | translate : 'Select Language' }}</span>
+          </h6>
+        </li>
+
+        @for (lang of languages | keyvalue; track lang.key) {
+          <li>
+            <button
+              type="button"
+              class="dropdown-item text-theme-main d-flex align-items-center justify-content-between gap-2 py-2"
+              (click)="switchLanguage(lang.key)"
+            >
+              <span class="ps-4">{{ lang.value }}</span>
+              @if (currentLang() === lang.key) {
+                <i class="bi bi-check2 fw-bold" aria-hidden="true"></i>
+              }
+            </button>
+          </li>
+        }
+      </ul>
+    </div>
   </div>
 
-  <div class="collapse mt-2" id="infoPanel">
+  <div class="collapse mt-2" [class.show]="isInfoOpen()" id="infoPanel">
     <div class="card card-body border mb-1 small shadow-sm rounded-4 bg-theme-muted border-theme">
       <div class="d-flex flex-column gap-2">
-        <div class="d-flex align-items-center gap-2">
-          <i class="bi bi-geo-alt text-theme-muted" aria-hidden="true"></i>
+        <div class="d-flex align-items-center gap-2 min-w-0">
+          <i class="bi bi-geo-alt text-theme-muted flex-shrink-0" aria-hidden="true"></i>
           <a
             target="_blank"
             rel="noopener"
-            class="text-decoration-none"
+            class="text-decoration-none min-w-0 text-break"
             [href]="'https://maps.google.com/?q=' + languageService.translateObj(venue().address)"
           >
             <span class="text-theme-main">{{ venue().address | translate }}</span>
           </a>
         </div>
-        <div class="d-flex align-items-center gap-2">
-          <i class="bi bi-telephone text-theme-muted" aria-hidden="true"></i>
-          <a class="text-decoration-none" [href]="'tel:' + venue().phone">
+        <div class="d-flex align-items-center gap-2 min-w-0">
+          <i class="bi bi-telephone text-theme-muted flex-shrink-0" aria-hidden="true"></i>
+          <a class="text-decoration-none min-w-0 text-break" [href]="'tel:' + venue().phone">
             <span class="text-theme-main">{{ venue().phone }}</span>
           </a>
         </div>
         @if (venue().wifiPassword) {
-          <div class="d-flex align-items-center gap-2">
-            <i class="bi bi-wifi text-theme-muted" aria-hidden="true"></i>
-            <span class="text-theme-main">
+          <div class="d-flex align-items-center gap-2 min-w-0">
+            <i class="bi bi-wifi text-theme-muted flex-shrink-0" aria-hidden="true"></i>
+            <span class="text-theme-main min-w-0 text-break">
               <strong>{{ 'wifi' | translate : 'Wi-Fi' }}:</strong>
               {{ venue().wifiPassword }}
             </span>

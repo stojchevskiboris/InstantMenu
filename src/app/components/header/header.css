@@ -1,3 +1,23 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.venue-brand {
+  min-width: 0;
+  flex: 1 1 0%;
+}
+
+.venue-title {
+  display: block;
+  max-width: min(100%, var(--venue-title-max-width, 240px));
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .status-dot {
   width: 8px;
   height: 8px;
@@ -36,14 +56,27 @@
   background: var(--bg-muted);
 }
 
+.btn-icon.is-active {
+  background: var(--bg-muted);
+  border-color: var(--accent-color) !important;
+  color: var(--accent-color);
+}
+
 header {
   position: relative;
   z-index: 1035;
   background-color: var(--bg-app);
 }
 
+.header-actions-menu {
+  min-width: 215px;
+  max-width: calc(100vw - 2rem);
+  border-radius: var(--radius-md);
+}
+
 .dropdown-item {
   min-height: 40px;
+  font-size: 0.9rem;
 }
 
 .dropdown-item.text-theme-main:hover,

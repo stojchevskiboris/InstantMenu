@@ -4,7 +4,7 @@
   (click)="openDetails()"
 >
   <div class="row g-0 flex-nowrap">
-    <div class="col-8 p-3 d-flex flex-column min-w-0">
+    <div class="col-8 p-3 product-card-body d-flex flex-column min-w-0">
       @if (item().tags && item().tags!.length > 0) {
         <div class="d-flex gap-1 mb-2 flex-wrap">
           @for (tag of item().tags!.slice(0, 2); track tag) {
@@ -30,7 +30,7 @@
         </div>
       }
 
-      <div class="mt-auto pt-1 d-flex align-items-center justify-content-between gap-2">
+      <div class="mt-auto pt-1 d-flex align-items-center justify-content-between flex-wrap gap-2">
         <span class="fw-bold text-theme-main price-label">
           {{ item().price | currencyPrice }}
         </span>

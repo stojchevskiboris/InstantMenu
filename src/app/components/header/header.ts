@@ -1,4 +1,4 @@
-import { Component, inject, computed, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, computed, signal, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { ThemeService } from '../../services/theme.service';
 import { LanguageService } from '../../services/language.service';
@@ -25,9 +25,14 @@ export class HeaderComponent implements OnInit {
   uiWords = this.languageService.uiWords;
 
   isVenueOpen: boolean = true;
+  isInfoOpen = signal(false);
 
   ngOnInit() {
     this.checkIfVenueIsOpen();
+  }
+
+  toggleInfoPanel() {
+    this.isInfoOpen.update((open) => !open);
   }
 
   checkIfVenueIsOpen() {

@@ -134,8 +134,8 @@
         </div>
       </div>
 
-      <div class="sheet-footer p-3 border-top border-theme bg-theme-card d-flex align-items-center gap-3">
-        <div class="sheet-stepper d-inline-flex align-items-center rounded-pill p-1">
+      <div class="sheet-footer p-3 border-top border-theme bg-theme-card d-flex align-items-center gap-2 gap-sm-3">
+        <div class="sheet-stepper d-inline-flex align-items-center rounded-pill p-1 flex-shrink-0">
           <button
             type="button"
             class="btn-sheet-step"
@@ -162,13 +162,13 @@
 
         <button
           type="button"
-          class="btn btn-primary-action flex-grow-1 rounded-pill fw-bold d-flex align-items-center justify-content-between px-4"
+          class="btn btn-primary-action flex-grow-1 min-w-0 rounded-pill fw-bold d-flex align-items-center justify-content-between gap-2 px-3 px-sm-4"
           (click)="onPrimaryAction()"
         >
-          <span>
+          <span class="text-truncate">
             {{ (quantity() === 0 ? 'addToOrder' : 'done') | translate }}
           </span>
-          <span>
+          <span class="text-nowrap flex-shrink-0">
             {{ (item.price * (quantity() === 0 ? 1 : quantity())) | currencyPrice }}
           </span>
         </button>

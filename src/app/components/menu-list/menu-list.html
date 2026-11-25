@@ -88,10 +88,10 @@
   } @else {
     @for (sub of subCategories(); track sub.id) {
       <section class="mb-4 pt-2 category-section" [id]="'sub-' + sub.id">
-        <div class="d-flex align-items-center justify-content-between mb-3">
-          <h5 class="section-heading mb-0 fw-bold">{{ sub.name | translate }}</h5>
+        <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+          <h5 class="section-heading mb-0 fw-bold min-w-0 text-truncate">{{ sub.name | translate }}</h5>
           <span
-            class="badge bg-theme-muted text-theme-muted rounded-pill px-3 py-2 border border-theme fw-medium"
+            class="badge bg-theme-muted text-theme-muted rounded-pill px-3 py-2 border border-theme fw-medium flex-shrink-0"
             style="font-size: 0.75rem;"
           >
             {{ sub.items.length }}

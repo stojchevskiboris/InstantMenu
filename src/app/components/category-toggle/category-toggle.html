@@ -5,7 +5,7 @@
         <button
           type="button"
           role="tab"
-          class="btn category-btn fw-bold flex-fill rounded-pill border-0 transition-all"
+          class="btn category-btn fw-bold flex-fill rounded-pill border-0 transition-all min-w-0 text-truncate"
           [attr.aria-selected]="selected() === category.id"
           [class.active]="selected() === category.id"
           (click)="select(category.id)"
