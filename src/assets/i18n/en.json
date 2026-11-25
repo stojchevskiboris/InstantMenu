@@ -25,6 +25,8 @@
   "noResults": "No matching items found",
   "noResultsHint": "Try another search term or reset your active filters.",
   "resetSearch": "Reset search",
+  "closestMatchesPrefix": "Showing closest matches for",
+  "dismissHint": "Dismiss",
   "filterAll": "All",
   "searchResultsCount": "matches",
   "tag_popular": "Popular",

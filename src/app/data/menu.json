@@ -376,6 +376,11 @@
                 "mk": "Кока Кола",
                 "en": "Coca Cola"
               },
+              "aliases": [
+                "Coca-Cola",
+                "Кока-Кола",
+                "Coke"
+              ],
               "description": {
                 "mk": "Најпознатиот освежителен газиран пијалок служен со мраз и лимон.",
                 "en": "The ultimate carbonated soft drink served crisp and ice-cold."

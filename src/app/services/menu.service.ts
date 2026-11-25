@@ -1,13 +1,14 @@
 import { Injectable, signal, computed, inject } from '@angular/core';
 import { MenuData, MainCategory, SubCategory, Product } from '../models/menu.model';
-import { LanguageService } from './language.service';
 import { OrderSelectionService, OrderLineItem } from './order-selection.service';
+import { MenuSearchService, ScoredMenuItem } from './menu-search.service';
 import menuDataJson from '../data/menu.json';
 
 export interface FilteredCategoryGroup {
   id: string;
   name: { [key: string]: string };
   matchCount: number;
+  maxScore: number;
   subCategories: SubCategory[];
 }
 
@@ -23,8 +24,8 @@ const PREFERRED_TAG_ORDER = [
   providedIn: 'root',
 })
 export class MenuService {
-  private readonly languageService = inject(LanguageService);
   private readonly orderSelection = inject(OrderSelectionService);
+  public readonly menuSearch = inject(MenuSearchService);
 
   private readonly _menuData = signal<MenuData>(menuDataJson as MenuData);
   public readonly menuData = this._menuData.asReadonly();
@@ -47,9 +48,9 @@ export class MenuService {
   private manualScrollTimer: ReturnType<typeof setTimeout> | null = null;
   public readonly isManualScrolling = signal<boolean>(false);
 
-  // Global Instant Search & Quick Filter Signals
-  public readonly searchQuery = signal<string>('');
-  public readonly selectedTag = signal<string>('all');
+  // Global Instant Search & Quick Filter Signals (delegated to MenuSearchService)
+  public readonly searchQuery = this.menuSearch.query;
+  public readonly selectedTag = this.menuSearch.activeTag;
 
   public readonly availableTags = computed<string[]>(() => {
     const tagSet = new Set<string>();
@@ -75,50 +76,100 @@ export class MenuService {
     () => this.searchQuery().trim().length > 0 || this.selectedTag() !== 'all'
   );
 
+  public readonly searchResults = computed<ScoredMenuItem[]>(
+    () => this.menuSearch.evaluation().results
+  );
+
+  public readonly isShowingFallbackMatches = computed<boolean>(
+    () => this.menuSearch.evaluation().isFallbackOnly
+  );
+
   public readonly filteredCategoryGroups = computed<FilteredCategoryGroup[]>(() => {
-    // Depend on active language & UI dictionary so localized tag searches stay reactive
-    this.languageService.currentLang();
-    this.languageService.uiWords();
+    const scoredItems = this.menuSearch.evaluation().results;
+    if (scoredItems.length === 0) return [];
 
-    const rawQuery = this.searchQuery().trim().toLowerCase();
-    const queryTokens = rawQuery ? rawQuery.split(/\s+/).filter(Boolean) : [];
-    const activeTag = this.selectedTag();
+    const categories = this._menuData().categories;
+    const catOrderMap = new Map<string, number>();
+    const subOrderMap = new Map<string, number>();
 
-    const groups: FilteredCategoryGroup[] = [];
+    categories.forEach((cat, cIdx) => {
+      catOrderMap.set(cat.id, cIdx);
+      cat.subCategories.forEach((sub, sIdx) => {
+        subOrderMap.set(`${cat.id}:${sub.id}`, sIdx);
+      });
+    });
 
-    for (const category of this._menuData().categories) {
-      const matchedSubs: SubCategory[] = [];
-      let categoryMatches = 0;
-
-      for (const sub of category.subCategories) {
-        const matchedItems = sub.items.filter((item) =>
-          this.matchesSearchAndTag(item, queryTokens, activeTag)
-        );
-
-        if (matchedItems.length > 0) {
-          matchedSubs.push({
-            ...sub,
-            items: matchedItems,
-          });
-          categoryMatches += matchedItems.length;
-        }
-      }
-
-      if (matchedSubs.length > 0) {
-        groups.push({
-          id: category.id,
-          name: category.name,
-          matchCount: categoryMatches,
-          subCategories: matchedSubs,
-        });
-      }
+    interface TempSubGroup {
+      sub: SubCategory;
+      items: Product[];
+      maxScore: number;
+      order: number;
     }
 
-    return groups;
+    interface TempCatGroup {
+      cat: MainCategory;
+      subs: Map<string, TempSubGroup>;
+      matchCount: number;
+      maxScore: number;
+      order: number;
+    }
+
+    const catGroups = new Map<string, TempCatGroup>();
+
+    // scoredItems is already sorted descending by score, preserving menuIndex on ties
+    for (const entry of scoredItems) {
+      let cGroup = catGroups.get(entry.mainCategory.id);
+      if (!cGroup) {
+        cGroup = {
+          cat: entry.mainCategory,
+          subs: new Map<string, TempSubGroup>(),
+          matchCount: 0,
+          maxScore: entry.score,
+          order: catOrderMap.get(entry.mainCategory.id) ?? 0,
+        };
+        catGroups.set(entry.mainCategory.id, cGroup);
+      }
+
+      cGroup.matchCount++;
+      if (entry.score > cGroup.maxScore) {
+        cGroup.maxScore = entry.score;
+      }
+
+      let sGroup = cGroup.subs.get(entry.subCategory.id);
+      if (!sGroup) {
+        sGroup = {
+          sub: entry.subCategory,
+          items: [],
+          maxScore: entry.score,
+          order: subOrderMap.get(`${entry.mainCategory.id}:${entry.subCategory.id}`) ?? 0,
+        };
+        cGroup.subs.set(entry.subCategory.id, sGroup);
+      }
+
+      if (entry.score > sGroup.maxScore) {
+        sGroup.maxScore = entry.score;
+      }
+      sGroup.items.push(entry.product);
+    }
+
+    return Array.from(catGroups.values())
+      .sort((a, b) => b.maxScore - a.maxScore || a.order - b.order)
+      .map((cg) => ({
+        id: cg.cat.id,
+        name: cg.cat.name,
+        matchCount: cg.matchCount,
+        maxScore: cg.maxScore,
+        subCategories: Array.from(cg.subs.values())
+          .sort((a, b) => b.maxScore - a.maxScore || a.order - b.order)
+          .map((sg) => ({
+            ...sg.sub,
+            items: sg.items,
+          })),
+      }));
   });
 
-  public readonly totalFilteredMatches = computed<number>(() =>
-    this.filteredCategoryGroups().reduce((sum, g) => sum + g.matchCount, 0)
+  public readonly totalFilteredMatches = computed<number>(
+    () => this.menuSearch.evaluation().results.length
   );
 
   // Item Detail Sheet State
@@ -131,29 +182,8 @@ export class MenuService {
   public readonly orderTotal = this.orderSelection.totalPrice;
   public readonly totalQuantity = this.orderSelection.totalItems;
 
-  private matchesSearchAndTag(
-    item: Product,
-    queryTokens: string[],
-    activeTag: string
-  ): boolean {
-    if (activeTag !== 'all') {
-      if (!item.tags || !item.tags.includes(activeTag)) {
-        return false;
-      }
-    }
-
-    if (queryTokens.length === 0) {
-      return true;
-    }
-
-    const nameValues = Object.values(item.name || {}).join(' ');
-    const descValues = Object.values(item.description || {}).join(' ');
-    const tagValues = (item.tags || [])
-      .map((t) => `${t} ${this.languageService.translateTag(t)}`)
-      .join(' ');
-
-    const haystack = `${nameValues} ${descValues} ${tagValues}`.toLowerCase();
-    return queryTokens.every((token) => haystack.includes(token));
+  constructor() {
+    this.menuSearch.setMenuData(this._menuData());
   }
 
   public selectMainCategory(categoryId: string): void {

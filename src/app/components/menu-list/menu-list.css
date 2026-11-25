@@ -32,6 +32,20 @@
   border: 1px solid var(--border-color);
 }
 
+.fallback-match-pill {
+  background-color: var(--bg-muted);
+  border: 1px solid var(--border-color);
+  font-size: 0.82rem;
+}
+
+.btn-dismiss-fallback {
+  min-width: 40px;
+  min-height: 40px;
+  margin: -0.25rem -0.5rem -0.25rem 0;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
 .reset-link {
   color: var(--accent-color);
   min-height: 40px;

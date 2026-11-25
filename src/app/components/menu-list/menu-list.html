@@ -4,6 +4,27 @@
 >
   @if (menuService.isFilterMode()) {
     @if (menuService.totalFilteredMatches() > 0) {
+      @if (showFallbackBanner()) {
+        <div
+          class="fallback-match-pill d-flex align-items-center justify-content-between gap-2 px-3 py-2 mb-2 rounded-pill"
+          role="status"
+        >
+          <span class="small text-theme-muted text-truncate">
+            <i class="bi bi-magic me-1 text-warning" aria-hidden="true"></i>
+            {{ 'closestMatchesPrefix' | translate : 'Showing closest matches for' }}
+            <strong class="text-theme-main">&laquo;{{ menuService.searchQuery().trim() }}&raquo;</strong>
+          </span>
+          <button
+            type="button"
+            class="btn-dismiss-fallback border-0 bg-transparent d-inline-flex align-items-center justify-content-center flex-shrink-0"
+            [attr.aria-label]="'dismissHint' | translate : 'Dismiss'"
+            (click)="dismissFallbackHint()"
+          >
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+      }
+
       <div class="d-flex align-items-center justify-content-between mb-3 px-1">
         <span class="small fw-semibold text-theme-muted">
           {{ menuService.totalFilteredMatches() }} {{ 'searchResultsCount' | translate : 'matches' }}

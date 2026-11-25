@@ -25,6 +25,8 @@
   "noResults": "Нема пронајдени производи",
   "noResultsHint": "Обидете се со друг збор или ресетирајте ги активните филтри.",
   "resetSearch": "Ресетирај пребарување",
+  "closestMatchesPrefix": "Прикажани најблиски резултати за",
+  "dismissHint": "Сокриј",
   "filterAll": "Сите",
   "searchResultsCount": "резултати",
   "tag_popular": "Популарно",

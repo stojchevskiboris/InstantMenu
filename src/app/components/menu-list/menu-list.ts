@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import {
   Component,
   inject,
+  signal,
+  computed,
   effect,
   AfterViewInit,
   OnDestroy,
@@ -29,6 +31,16 @@ export class MenuListComponent implements AfterViewInit, OnDestroy {
   private observer: IntersectionObserver | null = null;
   private rafPending = false;
   private onScrollBound = () => this.scheduleActiveSectionSync();
+
+  private readonly dismissedFallbackForQuery = signal<string>('');
+  public readonly showFallbackBanner = computed<boolean>(() => {
+    const q = this.menuService.searchQuery().trim();
+    return Boolean(
+      q &&
+      this.menuService.isShowingFallbackMatches() &&
+      this.dismissedFallbackForQuery() !== q
+    );
+  });
 
   subCategories = () => this.menuService.currentMainCategory()?.subCategories || [];
 
@@ -146,6 +158,11 @@ export class MenuListComponent implements AfterViewInit, OnDestroy {
   }
 
   resetSearch(): void {
+    this.dismissedFallbackForQuery.set('');
     this.menuService.resetSearchAndFilters();
+  }
+
+  dismissFallbackHint(): void {
+    this.dismissedFallbackForQuery.set(this.menuService.searchQuery().trim());
   }
 }

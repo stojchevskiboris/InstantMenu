@@ -15,6 +15,7 @@ export interface Product {
   description: { [key: string]: string };
   price: number;
   photoUrl: string;
+  aliases?: string[];
   tags?: string[];
   volume?: string;
   abv?: string;
